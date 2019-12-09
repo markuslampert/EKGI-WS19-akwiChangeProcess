@@ -1,0 +1,11 @@
+
+{
+	"modus": "UpdateDepartmentOrFaculty",
+	"formularData":{
+		"honorificPrefix": "asdf",
+		"familiyName": "asdf",
+		"givenName": "asdf",
+		"telephone": "asdfsadf",
+		"eMail": "asdfsadf"
+	}
+}

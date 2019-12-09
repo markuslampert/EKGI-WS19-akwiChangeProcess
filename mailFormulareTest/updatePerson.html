@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript" src="js/init_mailjs.js"></script>
+    <script type="text/javascript" src="js/FormularDataManager.js"></script>
+</head>
+<body>
+    <h2>Person ändern</h2>
+    <form id="contact_form">
+        <table>
+            <tr><td colspan="3"><b>Identifikation - Der Name und Vorname wie er auf akwi.de gelistet ist, um die Person im System identifizieren zu können.</b></td></tr>
+            <tr>
+                <td>Name*</td>
+                <td><input type="text" id="id_familiyName"></td>
+                <td style="padding-left: 500px;"><br /></td>
+            </tr>
+            <tr>
+                <td>Vorname*</td>
+                <td><input type="text" id="id_givenName"></td>
+            </tr>
+            <tr><td colspan="3">*Pflichtfelder</td></tr>
+            <tr><td><br /></td></tr>
+            <tr><td colspan="3"><b>Änderung beantragen - Hier die neuen Daten zu der Person eintragen.</b></td></tr>
+            <tr>
+            <td>Titel</td>
+            <td>
+                <select id="honorificPrefix">
+                    <option></option>
+                    <option>kein Titel</option>
+                    <option>Dr.</option>
+                    <option>Dr. Prof.</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="familiyName"></td>
+                <td style="padding-left: 500px;"><br /></td>
+            </tr>
+            <tr>
+                <td>Vorname</td>
+                <td><input type="text" id="givenName"></td>
+            </tr>
+        <tr>
+            <td>Telefon</td>
+            <td><input type="text" id="telephone"></td>
+        </tr>
+        <tr>
+            <td>E-Mail</td>
+            <td><input type="email" id="eMail"></td>
+        </tr>
+        <tr>
+            <td colspan="3">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+        </tr>
+            <td colspan="3">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+        </table>
+        <input type="submit" value="Formular senden">
+
+        <!-- hidden input fields -->
+        <input type="hidden" name="message" id="message">
+        <input type="hidden" name="data" id="data">
+        
+    </form>
+    <script>
+        function submitButton(){
+            var formularIds = ["id_familiyName", "id_givenName", "honorificPrefix","familiyName","givenName","telephone","eMail"];
+            var formularDataM = new FormularDataManager(formularIds);
+            var validInput =
+                formularDataM.checkRequiredFields(["id_familiyName","id_givenName"])
+                &&
+                formularDataM.checkAtLeastOneFieldFilled(
+                    ["honorificPrefix","familiyName","givenName","telephone","eMail"],
+                    "Bitte mindestens ein zu änderndes Feld ausfüllen."
+                );
+            if (validInput){
+                //generate json string
+                formularDataM.generateEMailContent(
+                    "UpdatePerson",
+                    "die Daten bezüglich einer Person sollen geändert werden."
+                );
+                //send Mail
+                formularDataM.sendEmail();
+            }
+        }
+    </script>
+</body>
+</html>
+
+

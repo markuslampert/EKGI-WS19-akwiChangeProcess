@@ -1,0 +1,35 @@
+
+Person
+- Titel (Dr. , Prof.) Dropdown
+- Name
+- Vorname
+- Telefon
+- E-Mail
+
+Hochschule
+- Name
+- Website
+- Adresse
+  - Straﬂe
+  - Hausnr. Int
+  - PLZ
+  - Ort
+  - Bundesland
+
+Fakultaet
+- Name
+- Zugehoerigkeit zu Hochschule
+- Angestellte
+
+Studiengang
+- Name
+- Anzahl der Studierenden im Studiengang gesamt
+- Anzahl der neueingeschriebenen Studierenden in den Studiengang
+- Zugehoerigkeit zu Fakultaet
+
+
+
+
+
+
+  

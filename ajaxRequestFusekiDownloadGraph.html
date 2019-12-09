@@ -1,0 +1,24 @@
+
+<script>
+
+function downloadAndRenameFile () {
+	window.URL = window.URL || window.webkitURL;
+	var xhr = new XMLHttpRequest(),
+		  a = document.createElement('a'), file;
+	xhr.open('GET', 'http://localhost:3030/akwi-latest-graph', true);
+	xhr.responseType = 'blob';
+	xhr.onreadystatechange = function x () {
+		if(xhr.readyState == 4){
+			file = new Blob([xhr.response], { type : 'application/octet-stream' });
+			a.href = window.URL.createObjectURL(file);
+			a.download = 'graph.ttl';
+			a.click();
+		}
+	};
+	xhr.send();
+}
+
+</script>
+
+<button onclick="downloadAndRenameFile()">Download akwi graph from Fuseki</button>
+

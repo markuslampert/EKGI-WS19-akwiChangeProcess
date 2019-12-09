@@ -1,0 +1,29 @@
+
+<script>
+    const Http = new XMLHttpRequest();
+    const url='http://fbwsvcdev.fh-brandenburg.de:8080/fuseki/addressbook';
+    const body = ""+
+        "prefix ab: <http://learningsparql.com/ns/addressbook#> \
+        SELECT ?email \
+        WHERE { \
+        ab:cindy ab:email ?email \
+        }"
+        ;
+    Http.open("POST", url);
+    Http.setRequestHeader("Content-type", "application/sparql-query");
+    Http.send(body);
+
+    Http.onreadystatechange = function() {
+
+        if (Http.readyState == 4  ) { // 4 means that request is done
+                                      // Javascript function JSON.parse to parse JSON data
+            if(!Http.responseText){
+                window.alert("Something went wrong.");
+            }
+            var jsObject = JSON.parse(Http.responseText);
+            console.log("state changed");
+            console.log(jsObject.results.bindings[0].email.value);
+        }
+
+    }
+</script>

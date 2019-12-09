@@ -1,0 +1,4 @@
+
+input:not([type="submit"]){
+    width: 200px;
+}

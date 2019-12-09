@@ -1,0 +1,25 @@
+
+{
+	"modus": "UpdatePerson",
+	"formularData":{
+		"id_familyName": "Schmidtmann",
+		"id_givenName": "Achim",
+		"familyName": "Schmidtmann",
+		"givenName": "Achim",
+		"honorificPrefix": "Dr. Prof.",
+		"telephone": "00495211065065",
+		"eMail": "achim.schmidtmann@fh-bielefeld.de"
+	}
+}	
+
+/*Beispiel: Die Email ändert sich*/
+
+{
+	"modus": "UpdatePerson",
+	"formularData": {
+		"id_familyName": "Schmidtmann",
+		"id_givenName": "Achim",
+		"eMail": "achim.schmidtmann@th-bielefeld.de"
+	}
+}
+

@@ -1,0 +1,10 @@
+PREFIX schema: <https://schema.org/>
+
+SELECT ?c
+WHERE {
+  ?c schema:department ?d1,
+      				   ?d2.
+  filter( ?d1 != ?d2 )
+}
+ORDER BY ?c
+LIMIT 25
