@@ -19,6 +19,7 @@
 	"formularData": {
 		"id_familyName": "Schmidtmann",
 		"id_givenName": "Achim",
+		"telephone": "00495211234567",
 		"eMail": "achim.schmidtmann@th-bielefeld.de"
 	}
 }

@@ -1,0 +1,90 @@
+
+BW = Baden-Württemberg;
+BY = Bayern;
+BE = Berlin;
+BB = Brandenburg;
+HB = Bremen;
+HH = Hamburg;
+HE = Hessen;
+MV = Mecklenburg-Vorpommern;
+NI = Niedersachsen;
+NW = Nordrhein-Westfalen;
+RP = Rheinland-Pfalz;
+SL = Saarland;
+SN = Sachsen;
+ST = Sachsen-Anhalt;
+SH = Schleswig-Holstein;
+TH = Thüringen.
+
+-- Bundesländer-Kürzel Anzeigen
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+Select Distinct ?3
+Where{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressRegion ?3.
+}
+
+--
+-> Falsche Kürzel Berichtigung
+BL HA SA BM NS BR
+BE HH SL HB NI BB richtig
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+Delete{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressRegion "BL".
+}
+Insert{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressRegion "BE".
+}
+Where{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressRegion "BL".
+}
+
+
+--
+-> Österreich auch falsch
+AU
+AT richtig
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+Delete{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressCountry "AU".
+}
+Insert{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressCountry "AT".
+}
+Where{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressCountry "AU".
+}
+
+
+-- Länderkürzel anzeigen
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+Select Distinct ?3
+Where{
+  ?1 a schema:CollegeOrUniversity;
+  	 schema:address ?2.
+  ?2 schema:addressCountry ?3.
+}
+
+
+

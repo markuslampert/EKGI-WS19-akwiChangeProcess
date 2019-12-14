@@ -16,51 +16,55 @@
     <h2>Person ändern</h2>
     <form id="contact_form">
         <table>
-            <tr><td colspan="3"><b>Identifikation - Der Name und Vorname wie er auf akwi.de gelistet ist, um die Person im System identifizieren zu können.</b></td></tr>
-            <tr>
-                <td>Name*</td>
-                <td><input type="text" id="id_familiyName"></td>
-                <td style="padding-left: 500px;"><br /></td>
-            </tr>
-            <tr>
-                <td>Vorname*</td>
-                <td><input type="text" id="id_givenName"></td>
-            </tr>
-            <tr><td colspan="3">*Pflichtfelder</td></tr>
-            <tr><td><br /></td></tr>
-            <tr><td colspan="3"><b>Änderung beantragen - Hier die neuen Daten zu der Person eintragen.</b></td></tr>
-            <tr>
-            <td>Titel</td>
-            <td>
-                <select id="honorificPrefix">
-                    <option></option>
-                    <option>kein Titel</option>
-                    <option>Dr.</option>
-                    <option>Dr. Prof.</option>
-                </select>
-            </td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td><input type="text" id="familiyName"></td>
-                <td style="padding-left: 500px;"><br /></td>
-            </tr>
-            <tr>
-                <td>Vorname</td>
-                <td><input type="text" id="givenName"></td>
-            </tr>
+        <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name und Vorname wie er auf akwi.de gelistet ist, um die Person im System identifizieren zu können.</b></td></tr>
         <tr>
-            <td>Telefon</td>
-            <td><input type="text" id="telephone"></td>
+            <td class="left_column">Name*</td>
+            <td class="right_column"><input type="text" id="id_familyName"></td>
         </tr>
         <tr>
-            <td>E-Mail</td>
-            <td><input type="email" id="eMail"></td>
+            <td class="left_column" >Vorname*</td>
+            <td class="right_column"><input type="text" id="id_givenName"></td>
+        </tr>
+        <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+        <tr><td class="left_column"><br /></td></tr>
+        <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Person eintragen.</b></td></tr>
+        <tr>
+        <td class="left_column">Titel</td>
+        <td class="right_column">
+            <select id="honorificPrefix">
+                <option></option>
+                <option>kein Titel</option>
+                <option>Dr.</option>
+                <option>Prof. Dr.</option>
+                <option>Prof.</option>
+                <option>Prof. Dr. Dr.</option>
+                <option>Prof. Ph.D.</option>
+            </select>
+        </td>
         </tr>
         <tr>
-            <td colspan="3">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+            <td class="left_column">Name</td>
+            <td class="right_column"><input type="text" id="familyName"></td>
+            <td class="left_column"><br /></td>
         </tr>
-            <td colspan="3">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+        <tr>
+            <td class="left_column">Vorname</td>
+            <td class="right_column"><input type="text" id="givenName"></td>
+        </tr>
+        <tr>
+            <td class="left_column">Telefon</td>
+            <td class="right_column"><input type="text" id="telephone"></td>
+        </tr>
+        <tr>
+            <td class="left_column">E-Mail</td>
+            <td class="right_column"><input type="email" id="eMail"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="left_column">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+        </tr>
+        <tr>
+            <td colspan="2" class="left_column">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+        </tr>
         </table>
         <input type="submit" value="Formular senden">
 
@@ -71,13 +75,13 @@
     </form>
     <script>
         function submitButton(){
-            var formularIds = ["id_familiyName", "id_givenName", "honorificPrefix","familiyName","givenName","telephone","eMail"];
+            var formularIds = ["id_familyName", "id_givenName", "honorificPrefix","familyName","givenName","telephone","eMail"];
             var formularDataM = new FormularDataManager(formularIds);
             var validInput =
-                formularDataM.checkRequiredFields(["id_familiyName","id_givenName"])
+                formularDataM.checkRequiredFields(["id_familyName","id_givenName"])
                 &&
                 formularDataM.checkAtLeastOneFieldFilled(
-                    ["honorificPrefix","familiyName","givenName","telephone","eMail"],
+                    ["honorificPrefix","familyName","givenName","telephone","eMail"],
                     "Bitte mindestens ein zu änderndes Feld ausfüllen."
                 );
             if (validInput){

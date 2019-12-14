@@ -6,7 +6,9 @@ class FormularDataManager{
         var formularData = {};
         for(var key in formularIds){
             var formularId = formularIds[key];
-            formularData[formularId]=document.getElementById(formularId).value;
+            var tmp = document.getElementById(formularId).value;
+            if(!isNaN(tmp)){tmp = parseInt(tmp);}
+            formularData[formularId]=tmp;
         }
         this.formularData = formularData; //formular Data is Object which contains User-Input
         this.delEmptyFormularFields();

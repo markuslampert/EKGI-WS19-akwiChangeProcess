@@ -1,4 +1,12 @@
 
 input:not([type="submit"]){
-    width: 200px;
+    width: 300px;
+}
+
+.left_column{
+    width: 0px;
+}
+
+.right_column{
+    width: 600px;
 }

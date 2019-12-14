@@ -2154,7 +2154,7 @@ akwi:TH_Brandenburg_W a akwi:DepartmentOrFaculty ;
 
 akwi:TH_Brandenburg_W_Ba_WI a schema:Course ;
                             rdfs:label "TH_Brandenburg_W_Ba_WI" ;
-                            schema:name "Wirtschaftsinformatik " ;
+                            schema:name "Wirtschaftsinformatik" ;
                             schema:educationalAlignment akwi:Ba ;
                             schema:provider akwi:TH_Brandenburg_W .
 

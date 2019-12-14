@@ -2,10 +2,8 @@
 {
 	"modus": "UpdateDepartmentOrFaculty",
 	"formularData":{
-		"honorificPrefix": "asdf",
-		"familiyName": "asdf",
-		"givenName": "asdf",
-		"telephone": "asdfsadf",
-		"eMail": "asdfsadf"
+		"id_legalName": "Hochschule Darmstadt",
+		"id_name": "Informatik",
+		"name": "Informatik"
 	}
 }

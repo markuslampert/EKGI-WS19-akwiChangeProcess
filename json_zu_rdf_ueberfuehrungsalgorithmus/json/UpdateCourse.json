@@ -1,0 +1,12 @@
+
+{
+	"modus": "UpdateCourse",
+	"formularData":{
+		"id_legalName": "Fachhochschule Burgenland",
+		"id_name": "Information, Medien & Kommunikation",
+		"id_targetName": "Bachelor",
+		"name": "Information, Medien & Kommunikation",
+		"newEnrollments": 30,
+		"totalEnrollments": 120
+	}
+}

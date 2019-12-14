@@ -2,8 +2,16 @@
 {
 	"modus": "UpdateCollegeOrUniversity",
 	"formularData":{
-		""
-		"name": "asdf",
-		"employee": "asdfsadf"
+		"id_legalName": "Beuth Hochschule für Technik Berlin",
+		"legalName": "Beuth Hochschule für Technik Berlin",
+		"url": "https://www.beuth-hochschule.de/",
+		"addressCountry": "DE",
+		"addressLocality": "Berlin",
+		"addressRegion": "BE",
+		"postalCode": "13353",
+		"streetAddress": "Luxemburger Straße 10"
 	}
 }
+
+
+
