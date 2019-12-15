@@ -10,6 +10,21 @@ var validFormularConfig =
             "modus": "UpdatePerson",
             "id_fields": ["id_familyName", "id_givenName"],
             "fields": ["familyName", "givenName", "honorificPrefix", "telephone", "eMail"]
+        },
+        {
+            "modus": "UpdateDepartmentOrFaculty",
+            "id_fields": ["id_legalName", "id_name"],
+            "fields": ["name"]
+        },
+        {
+            "modus": "UpdateCourse",
+            "id_fields": ["id_legalName", "id_name", "id_targetName"],
+            "fields": ["name","newEnrollments","totalEnrollments"]
+        },
+        {
+            "modus": "UpdateCollegeOrUniversity",
+            "id_fields": ["id_legalName"],
+            "fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"]
         }
     ]
 }

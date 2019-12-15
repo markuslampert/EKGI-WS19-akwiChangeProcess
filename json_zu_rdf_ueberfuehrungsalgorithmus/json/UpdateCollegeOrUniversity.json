@@ -14,4 +14,12 @@
 }
 
 
+{
+	"modus": "UpdateCollegeOrUniversity",
+	"formularData":{
+		"id_legalName": "Beuth Hochschule für Technik Berlin",
+		"postalCode": "13353"
+	}
+}
+
 

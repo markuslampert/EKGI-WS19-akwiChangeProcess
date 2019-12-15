@@ -8,10 +8,23 @@ document.execCommand('copy');
 
 
 <script>
-
+/*
 throw new Error("Error 1");
 
 window.alert("Hallo");
 
+
+prefixes = [];
+
+console.log(!prefixes.length);
+*/
+
+function f (a, b=false, c="asdf"){
+   console.log(a);
+   console.log(b);
+   console.log(c); 
+}
+
+f(1, c="fdsa");
 
 </script>

@@ -8,6 +8,7 @@ class FusekiConnector{
             this.jsoninput = JSON.parse(jsonString);
         }
     }
+
     sendQuery(){
         /* main procedure of this object is called from outside */
         var sparqlQuery = this.createQuery(); //creates the specific query
@@ -20,9 +21,29 @@ class FusekiConnector{
         /* selects the specific function to create the query and calls it */
         var sparqlQuery;
         switch(this.jsoninput.modus){
+            case "UpdateCollegeOrUniversity": sparqlQuery = new UpdateCollegeOrUniversity(this).updateCollegeOrUniversity(); break;
+            case "UpdateCourse": sparqlQuery = new UpdateCourse(this).updateCourse(); break;
+            case "UpdateDepartmentOrFaculty": sparqlQuery = new UpdateDepartmentOrFaculty(this).updateDepartmentOrFaculty(); break;
             case "UpdatePerson": sparqlQuery = new UpdatePerson(this).updatePerson(); break;
         }
         return sparqlQuery;
+    }
+
+    buildUpdateBlock(fd, placeholder = false, prefixes = []){
+        var tmp = "";
+        var k=1; // sequence to generate place holder
+        var i=0; // sequence to iterate prefixes
+        for(var key in fd){
+            if(!(key.startsWith("id_"))){// skip ids
+                var fdvalue = fd[key]; // Check if attribute value is a number. If yes, do not put them into quotation marks.
+                if(isNaN(fdvalue)){fdvalue = '"'+fdvalue+'"';}
+                tmp += (!prefixes.length ? 'schema:' : prefixes[i++]) + key + ' '
+                       + (placeholder ? ("?"+(k++)) : fdvalue) + ';';
+                // If there are no prefixes for attributes given, all attrinutes get prefix schema.
+            }
+        }
+        tmp = tmp.slice(0, -1) + '.';
+        return tmp;
     }
 
     query(body, content_type="sparql-query", url=fusekiUrlConfig){
