@@ -25,6 +25,11 @@ var validFormularConfig =
             "modus": "UpdateCollegeOrUniversity",
             "id_fields": ["id_legalName"],
             "fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"]
+        },
+        {
+            "modus": "InsertCollegeOrUniversity",
+            "id_fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"],
+            "fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"]
         }
     ]
 }

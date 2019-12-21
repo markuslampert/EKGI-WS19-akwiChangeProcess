@@ -19,12 +19,11 @@ prefixes = [];
 console.log(!prefixes.length);
 */
 
-function f (a, b=false, c="asdf"){
-   console.log(a);
-   console.log(b);
-   console.log(c); 
+function generateId(attribute, postfix="", prefix="akwi:", seperator="_"){
+   return (prefix + attribute.replace(" ", seperator) + postfix).toLowerCase();   
 }
+attributesEscapeFromIntConvertion = {"asdf":0, "jkö":0}
 
-f(1, c="fdsa");
+console.log(("asdf" in attributesEscapeFromIntConvertion));
 
 </script>

@@ -5,27 +5,6 @@ class UpdateCollegeOrUniversity{
             this.fc = fusekiConnector;
     }
 
-    selectCollegeID(id_legalName){
-        var tmp = `  
-        PREFIX schema: <https://schema.org/>
-        Select ?s
-        Where{
-          ?s a schema:CollegeOrUniversity;
-             schema:legalName "${id_legalName}".
-        }
-        `;
-        var answerObj = this.fc.query(tmp);      
-        var cid;
-        try{console.log(tmp);
-            cid = answerObj.results.bindings[0].s.value;
-        }
-        catch(e){
-            window.alert("ID Error: Data set can not be found. Check Ids in Json input.");
-            throw new Error("College ID not found by Select statement.");
-        }
-        return cid;
-    }
-
     buildCollegeUpdateBlock(fd, placeholder = false){
         var tmp = "";
         var k = 1; //sequence for placeholder
@@ -45,6 +24,27 @@ class UpdateCollegeOrUniversity{
         
         tmp = tmp.slice(0, -1) + '.';
         return tmp;
+    }
+
+    selectCollegeID(id_legalName){
+        var tmp = `  
+        PREFIX schema: <https://schema.org/>
+        Select ?s
+        Where{
+          ?s a schema:CollegeOrUniversity;
+             schema:legalName "${id_legalName}".
+        }
+        `;
+        var answerObj = this.fc.query(tmp);      
+        var cid;
+        try{console.log(tmp);
+            cid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            window.alert("ID Error: Data set can not be found. Check Ids in Json input.");
+            throw new Error("College ID not found by Select statement.");
+        }
+        return cid;
     }
 
     updateCollegeOrUniversity(){

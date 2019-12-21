@@ -25,6 +25,7 @@ class FusekiConnector{
             case "UpdateCourse": sparqlQuery = new UpdateCourse(this).updateCourse(); break;
             case "UpdateDepartmentOrFaculty": sparqlQuery = new UpdateDepartmentOrFaculty(this).updateDepartmentOrFaculty(); break;
             case "UpdatePerson": sparqlQuery = new UpdatePerson(this).updatePerson(); break;
+            case "InsertCollegeOrUniversity": sparqlQuery = new InsertCollegeOrUniversity(this).insertCollegeOrUniversity(); break;
         }
         return sparqlQuery;
     }

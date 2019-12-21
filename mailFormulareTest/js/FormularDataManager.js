@@ -4,10 +4,11 @@ class FormularDataManager{
     constructor (formularIds){
     /*Binds Formular User Input into an Object*/
         var formularData = {};
+        var numericAttributesEscapeFromParseInt = {"postalCode":{}}
         for(var key in formularIds){
             var formularId = formularIds[key];
             var tmp = document.getElementById(formularId).value;
-            if(!isNaN(tmp)){tmp = parseInt(tmp);}
+            if(!isNaN(tmp) && !(formularId in numericAttributesEscapeFromParseInt) ){tmp = parseInt(tmp);}
             formularData[formularId]=tmp;
         }
         this.formularData = formularData; //formular Data is Object which contains User-Input

@@ -1,0 +1,13 @@
+
+{
+	"modus": "InsertCollegeOrUniversity",
+	"formularData": {
+		"legalName": "Hogwarts",
+		"url": "https://hogwarts.ch/",
+		"addressCountry": "CH",
+		"addressLocality": "Zürich",
+		"addressRegion": "Zürich",
+		"postalCode": "8000",
+		"streetAddress": "Burgstraße 1"
+	}
+}
