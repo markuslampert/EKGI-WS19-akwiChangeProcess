@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript" src="js/init_mailjs.js"></script>
+    <script type="text/javascript" src="js/FormularDataManager.js"></script>
+</head>
+<body>
+    <h2>Fakultät einfügen</h2>
+    <form id="contact_form">
+        <table>
+        <tr>
+            <td colspan="2" class="left_column">
+                Hinzufügen einer Fakultät.
+                Name der Hochschule wie unter akwi.de gelistet, um die Fakultät zu dieser Hochschule hinzuzufügen.
+            </td>
+        </tr>
+        <tr>
+            <td class="left_column">Name der Hochschule</td>
+            <td class="right_column"><input type="text" id="legalName"></td>
+        </tr>
+        <tr><td class="left_column"><br /></td></tr>
+        <tr>
+            <td class="left_column" >Fakultät</td>
+            <td class="right_column"><input type="text" id="name"></td>
+        </tr>
+        </table>
+        <input type="submit" value="Formular senden">
+
+        <!-- hidden input fields -->
+        <input type="hidden" name="message" id="message">
+        <input type="hidden" name="data" id="data">
+    
+    </form>
+    <script>
+        function submitButton(){
+            var formularIds = ["legalName", "name"];           
+            var formularDataM = new FormularDataManager(formularIds);
+            var validInput =
+                formularDataM.checkRequiredFields(["legalName","name"]);
+            if (validInput){
+                //generate json string
+                formularDataM.generateEMailContent(
+                    "InsertDepartmentOrFaculty",
+                    "eine Fakultät soll eingefügt werden."
+                );
+                //send Mail
+                formularDataM.sendEmail();
+            }
+        }
+    </script>
+</body>
+</html>
+
+

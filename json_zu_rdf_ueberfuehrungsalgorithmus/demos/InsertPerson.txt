@@ -1,0 +1,62 @@
+
+Attribut einer Person ausgeben
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+Select *
+Where{
+  akwi:albus_dumbledore schema:familyName ?a;
+	schema:givenName ?b;
+    schema:honorificPrefix ?c;
+    schema:telephone ?e;
+    schema:eMail ?f;
+    ^schema:employee ?g.                                                     
+}
+
+
+
+
+Person einfügen
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+INSERT{
+  akwi:albus_dumbledore a schema:Person ;
+	  schema:familyName "Dumbledore" ;
+          schema:givenName "Albus" ;
+  	  schema:honorificPrefix "Dr. Prof." ;
+	  schema:telephone "0874324839582" ;
+  	  schema:eMail "albus.dumbledore@hogwarts.ch" .
+  akwi:hogwarts_information_technology schema:employee akwi:albus_dumbledore .
+}
+Where{}
+
+
+
+
+Person löschen - Änderung zurücksetzen
+
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/> 
+DELETE {
+  akwi:albus_dumbledore a schema:Person ;
+	  schema:familyName ?1 ;
+          schema:givenName ?2 ;
+  	  schema:honorificPrefix ?3 ;
+	  schema:telephone ?4 ;
+  	  schema:eMail ?5 .
+  akwi:hogwarts_information_technology schema:employee akwi:albus_dumbledore .
+}
+Where{
+  akwi:albus_dumbledore a schema:Person ;
+	  schema:familyName ?1 ;
+          schema:givenName ?2 ;
+  	  schema:honorificPrefix ?3 ;
+	  schema:telephone ?4 ;
+  	  schema:eMail ?5 .
+  akwi:hogwarts_information_technology schema:employee akwi:albus_dumbledore .
+}
+
+
+
+

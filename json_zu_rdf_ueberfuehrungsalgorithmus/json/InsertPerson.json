@@ -1,0 +1,14 @@
+
+{
+	"modus": "InsertPerson",
+	"formularData":{
+		"legalName": "Hogwarts",
+		"name": "Information Technology",
+		"familyName": "Dumbledore",
+		"givenName": "Albus",
+		"honorificPrefix": "Dr. Prof.",
+		"telephone": "0874324839582",
+		"eMail": "albus.dumbledore@hogwarts.ch"	
+	}
+}
+

@@ -30,6 +30,16 @@ var validFormularConfig =
             "modus": "InsertCollegeOrUniversity",
             "id_fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"],
             "fields": ["legalName","url","addressCountry","addressLocality","addressRegion","postalCode","streetAddress"]
+        },
+        {
+            "modus": "InsertDepartmentOrFaculty",
+            "id_fields": ["legalName","name"],
+            "fields": ["legalName","name"]
+        },
+        {
+            "modus": "InsertPerson",
+            "id_fields": ["legalName", "name", "familyName", "givenName", "honorificPrefix", "telephone", "eMail"],
+            "fields": ["legalName", "name", "familyName", "givenName", "honorificPrefix", "telephone", "eMail"]
         }
     ]
 }

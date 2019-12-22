@@ -26,6 +26,8 @@ class FusekiConnector{
             case "UpdateDepartmentOrFaculty": sparqlQuery = new UpdateDepartmentOrFaculty(this).updateDepartmentOrFaculty(); break;
             case "UpdatePerson": sparqlQuery = new UpdatePerson(this).updatePerson(); break;
             case "InsertCollegeOrUniversity": sparqlQuery = new InsertCollegeOrUniversity(this).insertCollegeOrUniversity(); break;
+            case "InsertDepartmentOrFaculty": sparqlQuery = new InsertDepartmentOrFaculty(this).insertDepartmentOrFaculty(); break;
+            case "InsertPerson": sparqlQuery = new InsertPerson(this).insertPerson(); break;
         }
         return sparqlQuery;
     }
@@ -77,6 +79,83 @@ class FusekiConnector{
         }
         //sparql-update has a body
         return JSON.parse(Http.responseText);
+    }
+
+    generateId(attribute, postfix="", prefix="akwi:", seperator="_"){
+        /* Spaces are replaced by the seperator symbols. Postfix and prefix are added to the attribute.
+           Returns a string with lowercase characters.
+        */
+        prefix = prefix.replace(" ", seperator);
+        attribute = attribute.replace(" ", seperator);
+        postfix = postfix.replace(" ", seperator);
+        return (prefix + attribute + postfix).toLowerCase();   
+    }
+    
+    checkCollegeExists(id_legalName){
+        /*returns id of specific CollegeOrUniversity object or false*/
+        var tmp = `  
+        PREFIX schema: <https://schema.org/>
+        Select ?s
+        Where{
+            ?s a schema:CollegeOrUniversity;
+                schema:legalName "${id_legalName}".
+        }
+        `;
+        var answerObj = this.query(tmp);      
+        var cid;
+        try{console.log(tmp);
+            cid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return cid;
+    }
+
+    checkFacultyExists(legalName, name){
+        /*returns id of specific DepartmentOrFaculty object or false*/
+        var tmp = `      
+            PREFIX schema: <https://schema.org/>
+            PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+            Select ?s
+            Where{
+                ?s a akwi:DepartmentOrFaculty;
+                    schema:name "${name}".
+                ?s ^schema:department ?2.
+                ?2 schema:legalName "${legalName}".
+            }
+            `;
+        var answerObj = this.query(tmp);      
+        var fid;
+        try{console.log(tmp);
+            fid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return fid;
+    }
+
+    checkPersonExists(familyName, givenName){
+        /*returns id of specific Person object or false*/
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            Select ?s
+            Where{
+            ?s a schema:Person;
+                schema:familyName "${familyName}";
+                schema:givenName "${givenName}".
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var pid;
+        try{console.log(tmp);
+            pid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return pid;
     }
 
 }

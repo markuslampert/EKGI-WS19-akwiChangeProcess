@@ -4,7 +4,7 @@ class FormularDataManager{
     constructor (formularIds){
     /*Binds Formular User Input into an Object*/
         var formularData = {};
-        var numericAttributesEscapeFromParseInt = {"postalCode":{}}
+        var numericAttributesEscapeFromParseInt = {"postalCode":{},"telephone":{}};
         for(var key in formularIds){
             var formularId = formularIds[key];
             var tmp = document.getElementById(formularId).value;
