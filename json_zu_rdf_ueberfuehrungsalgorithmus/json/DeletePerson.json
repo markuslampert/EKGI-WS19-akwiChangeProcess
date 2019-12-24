@@ -1,0 +1,10 @@
+
+{
+	"modus": "DeletePerson",
+	"formularData": {
+		"legalName": "Hogwarts",
+		"name": "Information Technology",
+		"familyName": "Dumbledore",
+		"givenName": "Albus"
+	}
+}

@@ -1,0 +1,19 @@
+
+{
+	"modus": "InsertCourse",
+	"formularData":{
+		"legalName": "Hogwarts",
+		"facultyName": "Information Technology",
+		"targetName": "Bachelor",
+		"name": "Business Informatics",
+		"newEnrollments": 62,
+		"totalEnrollments": 168
+	}
+}
+	
+"Wirtschaftsinformatik"
+"62"^^xsd:integer
+"168"^^xsd:integer
+
+"legalName", "facultyName", "targetName", "name", "newEnrollments", "totalEnrollments"
+

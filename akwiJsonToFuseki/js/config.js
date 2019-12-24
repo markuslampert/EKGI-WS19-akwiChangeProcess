@@ -40,6 +40,31 @@ var validFormularConfig =
             "modus": "InsertPerson",
             "id_fields": ["legalName", "name", "familyName", "givenName", "honorificPrefix", "telephone", "eMail"],
             "fields": ["legalName", "name", "familyName", "givenName", "honorificPrefix", "telephone", "eMail"]
+        },
+        {
+            "modus": "InsertCourse",
+            "id_fields": ["legalName", "facultyName", "targetName", "name", "newEnrollments", "totalEnrollments"],
+            "fields": ["legalName", "facultyName", "targetName", "name", "newEnrollments", "totalEnrollments"]
+        },
+        {
+            "modus": "DeletePerson",
+            "id_fields": ["familyName", "givenName"],
+            "fields": ["familyName", "givenName"]
+        },
+        {
+            "modus": "DeleteDepartmentOrFaculty",
+            "id_fields": ["legalName", "name"],
+            "fields": ["legalName", "name"]
+        },
+        {
+            "modus": "DeleteCourse",
+            "id_fields": ["legalName", "name", "targetName"],
+            "fields": ["legalName", "name", "targetName"]
+        },
+        {
+            "modus": "DeleteCollegeOrUniversity",
+            "id_fields": ["legalName"],
+            "fields": ["legalName"]
         }
     ]
 }

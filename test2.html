@@ -24,6 +24,9 @@ function generateId(attribute, postfix="", prefix="akwi:", seperator="_"){
 }
 attributesEscapeFromIntConvertion = {"asdf":0, "jkö":0}
 
-console.log(("asdf" in attributesEscapeFromIntConvertion));
+var str = "asdf asdf asdf asdf";
+//var newStr = str.replace(/(^\s+|\s+$)/g,'');
+str = str.replace(/ /g,'_');
+console.log(str);
 
 </script>

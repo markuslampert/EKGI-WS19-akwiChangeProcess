@@ -1,0 +1,10 @@
+
+{
+	"modus": "DeleteCourse",
+	"formularData":{
+		"legalName": "Hogwarts",
+		"name": "Business Informatics",
+		"targetName": "Bachelor"
+	}
+}
+

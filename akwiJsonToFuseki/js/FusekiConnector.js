@@ -28,6 +28,11 @@ class FusekiConnector{
             case "InsertCollegeOrUniversity": sparqlQuery = new InsertCollegeOrUniversity(this).insertCollegeOrUniversity(); break;
             case "InsertDepartmentOrFaculty": sparqlQuery = new InsertDepartmentOrFaculty(this).insertDepartmentOrFaculty(); break;
             case "InsertPerson": sparqlQuery = new InsertPerson(this).insertPerson(); break;
+            case "InsertCourse": sparqlQuery = new InsertCourse(this).insertCourse(); break;
+            case "DeleteCollegeOrUniversity": sparqlQuery = new DeleteCollegeOrUniversity(this).deleteCollegeOrUniversity(); break;
+            case "DeleteCourse": sparqlQuery = new DeleteCourse(this).deleteCourse(); break;
+            case "DeleteDepartmentOrFaculty": sparqlQuery = new DeleteDepartmentOrFaculty(this).deleteDepartmentOrFaculty(); break;
+            case "DeletePerson": sparqlQuery = new DeletePerson(this).deletePerson(); break;
         }
         return sparqlQuery;
     }
@@ -85,10 +90,10 @@ class FusekiConnector{
         /* Spaces are replaced by the seperator symbols. Postfix and prefix are added to the attribute.
            Returns a string with lowercase characters.
         */
-        prefix = prefix.replace(" ", seperator);
-        attribute = attribute.replace(" ", seperator);
-        postfix = postfix.replace(" ", seperator);
-        return (prefix + attribute + postfix).toLowerCase();   
+       var str = prefix + attribute + postfix;
+       str = str.replace(/ /g, seperator);
+       str = str.toLowerCase();
+       return str;
     }
     
     checkCollegeExists(id_legalName){
@@ -156,6 +161,124 @@ class FusekiConnector{
             return false;
         }
         return pid;
+    }
+
+    checkCourseExists(legalName, name, targetName){
+        /*returns id of specific course object or false*/
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            Select ?s
+            Where{
+              ?1 a schema:CollegeOrUniversity;
+                 schema:legalName "${legalName}";
+                 schema:department ?2.
+              ?2 ^schema:provider ?s.
+              ?s schema:name "${name}";
+                 schema:educationalAlignment ?4.
+              ?4 schema:targetName "${targetName}".
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var cid;
+        try{console.log(tmp);
+            cid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return cid;
+    }
+
+    checkAlignmentObjectExists(targetName){
+        /*returns id of specific course object or false*/
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            PREFIX akwi:  <https://bmake.th-brandenburg.de/akwi/>
+            Select *
+            Where{
+                ?s a schema:AlignmentObject;
+                schema:targetName "${targetName}".
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var aid;
+        try{console.log(tmp);
+            aid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return aid;
+    }
+
+    checkDependencyPerson(fid){
+        /* checks if there are persons which are assigned to specific faculty */
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+            Select *
+            Where{
+                <${fid}> a akwi:DepartmentOrFaculty;
+                         schema:employee ?s.                                                    
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var pid;
+        try{console.log(tmp);
+            pid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return pid;
+    }
+
+    checkDependencyCourse(fid){
+        /* checks if there are courses which are assigned to specific faculty
+           returns cid of first course object in the list
+        */
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+            Select *
+            Where{
+                <${fid}> a akwi:DepartmentOrFaculty;
+                         ^schema:provider ?s.                                                    
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var cid;
+        try{console.log(tmp);
+            cid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return cid;
+    }
+
+    checkDependencyFaculty(cid){
+        /* checks if there are courses which are assigned to specific faculty
+           returns cid of first course object in the list
+        */
+      
+        var tmp = `
+            PREFIX schema: <https://schema.org/>
+            PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+            Select *
+            Where{
+              <${cid}> schema:department ?s.
+            }
+        `;
+        var answerObj = this.query(tmp);      
+        var fid;
+        try{console.log(tmp);
+            fid = answerObj.results.bindings[0].s.value;
+        }
+        catch(e){
+            return false;
+        }
+        return fid;
     }
 
 }
