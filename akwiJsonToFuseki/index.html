@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>akwiJsonToFuseki</title>
+  </head>
+  <body>
+  <div id="page-container">
+    <header id="header">
+        <img src="img/logo.svg" id="logo">
+        <h1 id="h1_in_header">akwi json to Fuseki</h1>
+    </header>
+    <div id="content-wrap"> 
+      <input id="inputfield" type="text" placeholder="insert json string here"/>
+      <button id="submitButton" onclick="submitButton()">submit data</button><br />
+      <button id="downloadButton" onclick="downloadAndRenameFile()">download akwi graph from Fuseki</button>
+    </div>
+    <footer id="footer">
+        <br />
+    </footer>
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
+    <script src="js/config.js"></script>
+    <script src="js/JsonInputValidator.js"></script>
+    <script src="js/UpdatePerson.js"></script>
+    <script src="js/UpdateDepartmentOrFaculty.js"></script>
+    <script src="js/UpdateCourse.js"></script>
+    <script src="js/UpdateCollegeOrUniversity.js"></script>
+    <script src="js/InsertCollegeOrUniversity.js"></script>
+    <script src="js/InsertDepartmentOrFaculty.js"></script>
+    <script src="js/InsertPerson.js"></script>
+    <script src="js/InsertCourse.js"></script>
+    <script src="js/FusekiConnector.js"></script>
+    <script src="js/downloadRDFFromFuseki.js"></script>
+    <script src="js/DeletePerson.js"></script>
+    <script src="js/DeleteDepartmentOrFaculty.js"></script>
+    <script src="js/DeleteCourse.js"></script>
+    <script src="js/DeleteCollegeOrUniversity.js"></script>
+    <script>
+      function submitButton(){
+        var fc = new FusekiConnector(document.getElementById("inputfield").value);
+        fc.sendQuery();
+      }
+    </script>
+  </body>
+</html>
+
+
