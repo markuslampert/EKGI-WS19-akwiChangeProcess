@@ -1,9 +1,0 @@
-
-{
-	"modus": "UpdateDepartmentOrFaculty",
-	"formularData":{
-		"id_legalName": "Hochschule Darmstadt",
-		"id_name": "Informatik",
-		"name": "Informatik"
-	}
-}
