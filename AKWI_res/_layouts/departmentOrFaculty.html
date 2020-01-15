@@ -1,0 +1,153 @@
+---
+layout: "default"
+---
+
+{% include faculty_liquid.html %}
+
+<div class = "main_area">
+  <div class="header">
+  <h2>
+    Fakultät / Fachbereich
+    {{ name }}
+    <button class="btn" id="btnUpdateFaculty"><i class="fa fa-gear fa-spin-hover "></i></button>
+    <button class="btn" id="btnDeleteFaculty"><i class="fa fa-minus fa-hover"></i></button>
+  </h2>
+  <h5>
+    ( {{ legalName }} )
+  </h5>
+  </div>
+  <center>
+      <h5>Zugehörige Studiengänge</h5>
+      {% capture courses_query2 %}
+        Select
+          ?course
+        Where{
+          ?resourceUri ^schema:provider ?course.
+        }
+        ORDER BY ?course
+      {% endcapture %}
+      {% assign result_set = page.rdf | sparql_query: courses_query2 %}
+      <ul>
+      {% for row in result_set %}
+        <li>
+          <a>
+            {{ row.course | rdf_property: "schema:name" }}
+            {{ row.course | rdf_property: "schema:educationalAlignment" | rdf_property: "schema:targetName" }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+  </center>
+</div>
+
+<!-- Modals    -------------------------------------------------->
+
+<!-- Modal delete faculty -->
+<div id="modalDeleteFaculty" class="modal">
+  <div class="formStyle">
+  <h2>
+  <span class="buttonClose" id="closeDeleteFaculty">&times;</span>
+  <b>Mit diesem Formular können Sie das Löschen einer Fakultät beantragen.</b>
+  </h2>
+  <form id="formDeleteFaculty">
+	<table>
+	  <tr><td colspan="2" class="left_column"><b>Der Name der Hochschule und der Name der Fakultät wie er auf akwi.de gelistet ist, um die Fakultät im System identifizieren zu können.</b></td></tr>
+	  <tr>
+		  <td class="left_column">Hochschule</td>
+		  <td class="right_column">
+        <input
+          type="text"
+          id="fdf_legalName"
+          readonly
+          value="{{ legalName }}"
+        >
+      </td>
+	  </tr>
+	  <tr>
+		  <td class="left_column" >Fakultät</td>
+		  <td class="right_column">
+        <input
+          type="text"
+          id="fdf_name"
+          readonly
+          value="{{ name }}"
+        >
+      </td>
+	  </tr>
+	  </table>
+	  <input type="submit" value="Formular senden" id="submitDeleteFaculty">
+  
+	  <!-- hidden input fields -->
+	  <input type="hidden" name="message" id="fdf_message">
+	  <input type="hidden" name="data" id="fdf_data">
+  </form>
+  </div>
+  </div>
+
+<!-- Modal update faculty -->
+<div id="modalUpdateFaculty" class="modal">
+  <div class="formStyle">
+  <h2>
+  <span class="buttonClose" id="closeUpdateFaculty">&times;</span>
+  <b>Mit diesem Formular können Sie das Ändern der Daten einer Fakultät beantragen.</b>
+  </h2>
+  <form id="formUpdateFaculty">
+	<table>
+	  <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name der Hochschule und der Name der Fakultät wie er auf akwi.de gelistet ist, um die Fakultät im System identifizieren zu können.</b></td></tr>
+	  <tr>
+		  <td class="left_column">Hochschule*</td>
+		  <td class="right_column">
+        <input
+          type="text"
+          id="fuf_id_legalName"
+          readonly
+          value="{{ legalName }}"
+        >
+      </td>
+	  </tr>
+	  <tr>
+		  <td class="left_column" >Fakultät*</td>
+		  <td class="right_column">
+        <input
+          type="text"
+          id="fuf_id_name"
+          readonly
+          value="{{ name }}"
+        >
+      </td>
+	  </tr>
+	  <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+	  <tr><td class="left_column"><br /></td></tr>
+	  <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Fakultät eintragen.</b></td></tr>
+	  <tr>
+		  <td class="left_column" >Fakultät*</td>
+		  <td class="right_column">
+        <input
+          type="text"
+          id="fuf_name"
+          noClear
+          value="{{ name }}"
+        >
+      </td>
+	  </tr>
+	</table>
+	  <input type="submit" value="Formular senden" id="submitUpdateFaculty">
+  
+	<!-- hidden input fields -->
+	<input type="hidden" name="message" id="fuf_message">
+	<input type="hidden" name="data" id="fuf_data">
+  
+  </form>
+  </div>
+  </div>
+
+<!-- Modals End -------------------------------------------------->
+
+ <!-- Logic for modals -------------------------------------------->
+ <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+ 
+ <script type="text/javascript" src="/js/modalDeleteFaculty.js"></script>
+ <script type="text/javascript" src="/js/modalUpdateFaculty.js"></script>
+ 
+ <script type="text/javascript" src="/js/facultyWindowOnClick.js"></script>
+ <!-- Logic for modals End -->

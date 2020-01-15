@@ -1,0 +1,11 @@
+
+<!-- get variables used in the html -->
+{% assign person = page.rdf %}
+{% assign name = person | rdf_inverse_property: "schema:employee" | rdf_property: "schema:name" %}
+{% assign legalName = person | rdf_inverse_property: "schema:employee" | rdf_inverse_property: "schema:department" | rdf_property: "schema:legalName" %}
+
+{% assign eMail = person | rdf_property: "schema:eMail" %}
+{% assign telephone = person | rdf_property: "schema:telephone" %}
+{% assign givenName = person | rdf_property: "schema:givenName" %}
+{% assign familyName = person | rdf_property: "schema:familyName" %}
+{% assign honorificPrefix = person | rdf_property: "schema:honorificPrefix" %}

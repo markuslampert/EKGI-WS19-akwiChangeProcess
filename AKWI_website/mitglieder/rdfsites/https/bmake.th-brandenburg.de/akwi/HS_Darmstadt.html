@@ -1,0 +1,592 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Custom Style Sheet -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Arbeitskreis Wirtschaftsinformatik an Hochschulen für angewandte Wissenschaften</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/css/business-frontpage.css" rel="stylesheet">
+  <!-- Favicon einbinden -->
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Font-Awesome einbinden --> <!-- used for button symbols -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/popper/popper.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- emailjs -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+  <script type="text/javascript" src="/js/init_emailjs.js"></script>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom:10px;">
+      <div class="container">
+          <a class="navbar-brand" href="/index.html"><img src="/images/AKWILogo.png" style="height: 40px;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+            <a class="nav-link" href="/index.html">Über uns</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/tagungen.html">Tagungen</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/publikationen.html">Publikationen</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/mitglieder/index.html">Mitglieder</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/leitung.html">Leitungsgremium</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/links.html">Links & Services</a>
+            </li>           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header with Background Image -->
+    <header class="business-header" style="
+    margin-top: 15px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-4 text-center text-white mt-3"><b>AKWI</b></h1>
+			<h3 class="display-5 text-center text-white mt-2">Arbeitskreis Wirtschaftsinformatik</h3>
+			<h4 class="text-center text-white mt-2">an Hochschulen für angewandte Wissenschaften</h4>
+          </div>
+        </div>
+      </div>
+    </header>
+
+	
+<!-- get variables used in the html -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- If university has one faculty, fill this faculty in the corresponding input fields by using the variable facultyInput. -->
+
+
+
+
+
+
+
+<div class = "main_area">
+
+<div class="header">
+<h1>
+  Hochschule Darmstadt
+  <button class="btn" id="btnUpdateUniversity"><i class="fa fa-gear fa-spin-hover "></i></button>
+  <button class="btn" id="btnDeleteUniversity"><i class="fa fa-minus fa-hover"></i></button>
+</h1>
+</div>
+
+<div class="row">
+<div class="side">
+<h2> Studiengänge <button class="btn" id="btnInsertCourse"><i class="fa fa-plus fa-hover"></i></button> </h2>
+
+
+  <ul>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_I_Ba_Inf.html">
+      Informatik
+      Bachelor
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_I_Ma_Inf.html">
+      Informatik
+      Master
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_W_Ba_BWL.html">
+      Betriebswirtschaftslehre
+      Bachelor
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_W_Ma_BWL.html">
+      Betriebswirtschaftslehre
+      Master
+      </a>
+    </li>
+  
+  </ul>
+
+  <h2> Professoren <button class="btn" id="btnInsertPerson"><i class="fa fa-plus fa-hover"></i></button> </h2>
+
+
+  <ul>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/michael_rebstock.html">
+        Prof. Dr.
+        Rebstock
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/omid_tafreschi.html">
+        Prof. Dr.
+        Tafreschi
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/urs_andelfinger.html">
+        Prof. Dr.
+        Andelfinger
+      </a>
+    </li>
+  
+  </ul>
+</div>
+
+<div class="main">
+<h2>Adresse</h2>
+<table>
+  
+  <tr><td>Website</td><td><a href="https://fbi.h-da.de/" >https://fbi.h-da.de/</a></td></tr>
+  <tr><td></td></tr>
+  <tr><td>Anschrift</td></tr>
+  <tr><td>Str. Hs.-Nr.</td><td>Schöfferstr. 8b</td></tr>
+  <tr><td>PLZ</td><td>64295</td></tr>
+  <tr><td>Ort</td><td>Darmstadt</td></tr>
+  <tr><td>Bundesland</td><td>HE</td></tr>
+  <tr><td>Land</td><td>DE</td></tr>
+</table>
+
+</div>
+<div class="aside">
+<h2>Fakultäten / Fachbereiche <button class="btn" id="btnInsertFaculty"><i class="fa fa-plus fa-hover"></i></button> </h2>
+  
+  
+  <ul>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_I.html">
+        Informatik
+      </a>
+    </li>
+  
+    <li>
+      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt_W.html">
+        Wirtschaft
+      </a>
+    </li>
+  
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- Modals -------------------------------------------------->
+
+        <!-- Modal delete university -->
+        <div id="modalDeleteUniversity" class="modal">
+          <div class="formStyle">
+            <h2>
+              <span class="buttonClose" id="closeDeleteUniversity">&times;</span>
+              <b>Mit diesem Formular können Sie das Löschen einer Hochschule beantragen.</b>
+            </h2>
+            <form id="formDeleteUniversity">
+              <table>
+              <tr><td colspan="2" class="left_column"><b>Der Name der Hochschule wie er auf akwi.de gelistet ist, um die Hochschule im System identifizieren zu können.</b></td></tr>
+              <tr>
+                  <td class="left_column">Name der Hochschule</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fdu_legalName"
+                      readonly
+                      value="Hochschule Darmstadt"
+                    >
+                  </td>
+              </tr>
+              </table>
+              <input type="submit" value="Formular senden" id="submitDeleteUniversity">
+      
+              <!-- hidden input fields -->
+              <input type="hidden" name="message" id="fdu_message">
+              <input type="hidden" name="data" id="fdu_data">
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal update university -->
+        <div id="modalUpdateUniversity" class="modal">
+          <div class="formStyle">
+            <h2>
+              <span class="buttonClose" id="closeUpdateUniversity">&times;</span>
+              <b>Mit diesem Formular können Sie das Ändern der Daten einer Hochschule beantragen.</b>
+            </h2>
+            <form id="formUpdateUniversity">
+              <table>
+              <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name der Hochschule wie er auf akwi.de gelistet ist, um die Hochschule im System identifizieren zu können.</b></td></tr>
+              <tr>
+                  <td class="left_column">Name*</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_id_legalName"
+                      readonly
+                      value="Hochschule Darmstadt"
+                    >
+                  </td>
+              </tr>
+              <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+              <tr><td class="left_column"><br /></td></tr>
+              <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Hochschule eintragen.</b></td></tr>
+              <tr>
+              <td class="left_column">Name</td>
+              <td class="right_column">
+                <input
+                  type="text"
+                  id="fuu_legalName"
+                  noClear
+                  value="Hochschule Darmstadt"
+                >
+              </td>
+              </tr>
+              <tr>
+                  <td class="left_column">URL</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_url"
+                      placeholder="https://www.example.com/"
+                      noClear
+                      value="https://fbi.h-da.de/"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Land</td>
+                  <td class="right_column">
+                      <select id="fuu_addressCountry" noClear>
+                          <option></option>
+                          <option selected >DE</option>
+                          <option  >AT</option>
+                          <option  >CH</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Ort</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_addressLocality"
+                      noClear
+                      value="Darmstadt"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Region</td>
+                  <td class="right_column">
+                    <select id="fuu_addressRegion" noClear>
+                        <option></option>
+                        <option  >BB</option> 
+                        <option  >BE</option> 
+                        <option  >Burgenland</option> 
+                        <option  >BW</option> 
+                        <option  >BY</option> 
+                        <option  >HB</option> 
+                        <option selected >HE</option> 
+                        <option  >HH</option> 
+                        <option  >Luzern</option> 
+                        <option  >MV</option> 
+                        <option  >NI</option> 
+                        <option  >NW</option> 
+                        <option  >RP</option> 
+                        <option  >SH</option> 
+                        <option  >SL</option> 
+                        <option  >SN</option>
+                        <option  >ST</option>
+                        <option  >Solothurn</option> 
+                        <option  >TH</option> 
+                        <option  >Tirol</option> 
+                        <option  >Wallis</option> 
+                        <option  >Wien</option> 
+                        <option  >Zürich</option>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">PLZ</td>
+                  <td class="right_column">
+                    <input
+                      type="number"
+                      id="fuu_postalCode"
+                      noClear
+                      value="64295"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Str. Nr.</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_streetAddress"
+                      placeholder="Musterstraße 10"
+                      noClear
+                      value="Schöfferstr. 8b"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="left_column">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+              </tr>
+              <tr>
+                  <td colspan="2" class="left_column">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+              </tr>
+              </table>
+              <input type="submit" value="Formular senden" id="submitUpdateUniversity">
+              
+              <!-- hidden input fields -->
+              <input type="hidden" name="message" id="fuu_message">
+              <input type="hidden" name="data" id="fuu_data">  
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal insert course -->
+<div id="modalInsertCourse" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeInsertCourse">&times;</span>
+		<b>Mit diesem Formular können Sie das Einfügen eines Studiengangs beantragen.</b>
+	  </h2>
+	  <form id="formInsertCourse">
+		<table>
+		  <tr><td colspan="2" class="left_column"><b>Studiengang hinzufügen. Der Name der Hochschule, der Fakultät und des Abschlusses, wie er auf akwi.de gelistete ist, angeben, um den neuen Studiengang zuzuordnen.</b></td></tr>
+		  <tr>
+			  <td class="left_column">Name der Hochschule</td>
+			  <td class="right_column">
+          <input 
+            type="text"
+            id="fic_legalName"
+            readonly
+            value="Hochschule Darmstadt"
+          >
+        </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Name der Fakultät</td>
+			  <td class="right_column">
+          <input
+            type="text"
+            id="fic_facultyName"
+            
+            value=""
+          >
+        </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Abschluss</td>
+			  <td class="right_column">
+				  <select id="fic_targetName">
+					  <option></option>
+					  <option>Bachelor</option>
+					  <option>Master</option>
+					  <option>Diplom</option>
+				  </select>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column" >Name des Studiengang</td>
+			  <td class="right_column"><input type="text" id="fic_name"></td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Neueinschreibungen</td>
+			  <td class="right_column"><input type="number" id="fic_newEnrollments"></td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Studierende gesamt</td>
+			  <td class="right_column"><input type="number" id="fic_totalEnrollments"></td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitInsertCourse">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fic_message">
+		  <input type="hidden" name="data" id="fic_data">
+	  </form>
+	</div>
+  </div>
+
+<!-- Modal insert faculty -->
+  <div id="modalInsertFaculty" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeInsertFaculty">&times;</span>
+		<b>Mit diesem Formular können Sie das Einfügen einer Fakultät beantragen.</b>
+	  </h2>
+	  <form id="formInsertFaculty">
+		<table>
+		  <tr>
+			<td colspan="2" class="left_column">
+				Hinzufügen einer Fakultät.
+				Name der Hochschule wie unter akwi.de gelistet, um die Fakultät zu dieser Hochschule hinzuzufügen.
+			</td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Name der Hochschule</td>
+			  <td class="right_column">
+          <input
+            type="text"
+            id="fif_legalName"
+            readonly
+            value="Hochschule Darmstadt"
+          >
+        </td>
+		  </tr>
+		  <tr><td class="left_column"><br /></td></tr>
+		  <tr>
+			  <td class="left_column" >Fakultät</td>
+			  <td class="right_column"><input type="text" id="fif_name"></td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitInsertFaculty">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fif_message">
+		  <input type="hidden" name="data" id="fif_data">
+	  </form>
+	</div>
+  </div>
+
+<!-- Modal insert person -->
+      <div id="modalInsertPerson" class="modal">
+        <div class="formStyle">
+          <h2>
+            <span class="buttonClose" id="closeInsertPerson">&times;</span>
+            <b>Mit diesem Formular können Sie das Einfügen einer Person beantragen.</b>
+          </h2>
+          <form id="formInsertPerson">
+            <table>
+            <tr><td colspan="2" class="left_column"><b>Person hinzufügen. Name der Hochschule und Name der Fakultät, wie er auf akwi.de gelistet ist, um die Person der Fakultät zuzuordnen.</b></td></tr>
+            <tr>
+                <td class="left_column">Name der Hochschule</td>
+                <td class="right_column">
+                  <input
+                   type="text"
+                   id="fip_legalName"
+                   readonly
+                   value="Hochschule Darmstadt"
+                  >
+                </td>
+            </tr>
+            <tr>
+                <td class="left_column">Name der Fakultät</td>
+                <td class="right_column">
+                  <input
+                    type="text"
+                    id="fip_name"
+                    
+                    value=""
+                  >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="left_column"><br /><b>Daten zu Person</b></td>
+            </tr>
+            <tr>
+                <td class="left_column">Name</td>
+                <td class="right_column"><input type="text" id="fip_familyName"></td>
+            </tr>
+            <tr>
+                <td class="left_column" >Vorname</td>
+                <td class="right_column"><input type="text" id="fip_givenName"></td>
+            </tr>
+            <tr>
+            <td class="left_column">Titel</td>
+            <td class="right_column">
+                <select id="fip_honorificPrefix">
+                    <option></option>
+                    <option>kein Titel</option>
+                    <option>Dr.</option>
+                    <option>Prof. Dr.</option>
+                    <option>Prof.</option>
+                    <option>Prof. Dr. Dr.</option>
+                    <option>Prof. Ph.D.</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td class="left_column">Telefon</td>
+                <td class="right_column"><input type="text" id="fip_telephone"></td>
+            </tr>
+            <tr>
+                <td class="left_column">E-Mail</td>
+                <td class="right_column"><input type="email" id="fip_eMail"></td>
+            </tr>
+            </table>
+            <input type="submit" value="Formular senden" id="submitInsertPerson">
+    
+            <!-- hidden input fields -->
+            <input type="hidden" name="message" id="fip_message">
+            <input type="hidden" name="data" id="fip_data">
+            
+        </form>
+        </div>
+      </div>
+
+      <!-- Modals End -------------------------------------------------->
+  
+      <!-- Logic for modals -------------------------------------------->
+      <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+      <script type="text/javascript" src="/js/modalDeleteUniversity.js"></script>
+      <script type="text/javascript" src="/js/modalUpdateUniversity.js"></script>
+      <script type="text/javascript" src="/js/modalInsertCourse.js"></script>
+      <script type="text/javascript" src="/js/modalInsertPerson.js"></script>
+      <script type="text/javascript" src="/js/modalInsertFaculty.js"></script>
+      <script type="text/javascript" src="/js/universityWindowOnClick.js"></script>
+      <!-- Logic for modals End -->
+      
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+  	<div class="container">
+    	<p class="m-0 text-center text-white"><br></p>
+    	<br><br>
+    	<p class="m-0 text-center text-white">
+        	<a class="navbar-brand" href="/impressum.html">Impressum</a>
+    	</p>
+  	</div>
+	</footer>
+
+</body>
+</html>

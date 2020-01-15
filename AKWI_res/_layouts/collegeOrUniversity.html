@@ -1,0 +1,470 @@
+---
+layout: "default"
+---
+
+{% include university_liquid.html %}
+
+<div class = "main_area">
+
+<div class="header">
+<h1>
+  {{ legalName }}
+  <button class="btn" id="btnUpdateUniversity"><i class="fa fa-gear fa-spin-hover "></i></button>
+  <button class="btn" id="btnDeleteUniversity"><i class="fa fa-minus fa-hover"></i></button>
+</h1>
+</div>
+
+<div class="row">
+<div class="side">
+<h2> Studiengänge <button class="btn" id="btnInsertCourse"><i class="fa fa-plus fa-hover"></i></button> </h2>
+{% capture courses_query %}
+  Select
+	?course
+  Where{
+    ?resourceUri a schema:CollegeOrUniversity;
+                   schema:department ?departmentOrFaculty.
+    ?departmentOrFaculty ^schema:provider ?course.
+  }
+  ORDER BY ?course
+{% endcapture %}
+{% assign result_set = page.rdf | sparql_query: courses_query %}
+  <ul>
+  {% for row in result_set %}
+    <li>
+      <a href="/mitglieder{{ row.course.page_url }}">
+      {{ row.course | rdf_property: "schema:name" }}
+      {{ row.course | rdf_property: "schema:educationalAlignment" | rdf_property: "schema:targetName"}}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h2> Professoren <button class="btn" id="btnInsertPerson"><i class="fa fa-plus fa-hover"></i></button> </h2>
+{% capture collegeOrUniversities_query %}
+  Select
+    ?employee
+  Where{
+    ?resourceUri a schema:CollegeOrUniversity;
+                 schema:department ?departmentOrFaculty.
+    ?departmentOrFaculty schema:employee ?employee.
+  }
+  ORDER BY ?employee
+{% endcapture %}
+{% assign result_set = page.rdf | sparql_query: collegeOrUniversities_query %}
+  <ul>
+  {% for row in result_set %}
+    <li>
+      <a href="/mitglieder{{ row.employee.page_url }}">
+        {{ row.employee | rdf_property: "schema:honorificPrefix" }}
+        {{ row.employee | rdf_property: "schema:familyName" }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
+<div class="main">
+<h2>Adresse</h2>
+<table>
+  {% assign website = page.rdf | rdf_property: "schema:url" %}
+  <tr><td>Website</td><td><a href="{{ website }}" >{{ website }}</a></td></tr>
+  <tr><td></td></tr>
+  <tr><td>Anschrift</td></tr>
+  <tr><td>Str. Hs.-Nr.</td><td>{{ streetAddress }}</td></tr>
+  <tr><td>PLZ</td><td>{{ postalCode }}</td></tr>
+  <tr><td>Ort</td><td>{{ addressLocality }}</td></tr>
+  <tr><td>Bundesland</td><td>{{ addressRegion }}</td></tr>
+  <tr><td>Land</td><td>{{ addressCountry }}</td></tr>
+</table>
+
+</div>
+<div class="aside">
+<h2>Fakultäten / Fachbereiche <button class="btn" id="btnInsertFaculty"><i class="fa fa-plus fa-hover"></i></button> </h2>
+  {% capture faculties_query %}
+    Select
+      ?departmentOrFaculty
+    Where{
+      ?resourceUri a schema:CollegeOrUniversity;
+                   schema:department ?departmentOrFaculty.
+    }
+    ORDER BY ?departmentOrFaculty
+  {% endcapture %}
+  {% assign result_set = page.rdf | sparql_query: faculties_query %}
+  <ul>
+  {% for row in result_set %}
+    <li>
+      <a href="/mitglieder{{ row.departmentOrFaculty.page_url }}">
+        {{ row.departmentOrFaculty | rdf_property: "schema:name" }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- Modals -------------------------------------------------->
+
+        <!-- Modal delete university -->
+        <div id="modalDeleteUniversity" class="modal">
+          <div class="formStyle">
+            <h2>
+              <span class="buttonClose" id="closeDeleteUniversity">&times;</span>
+              <b>Mit diesem Formular können Sie das Löschen einer Hochschule beantragen.</b>
+            </h2>
+            <form id="formDeleteUniversity">
+              <table>
+              <tr><td colspan="2" class="left_column"><b>Der Name der Hochschule wie er auf akwi.de gelistet ist, um die Hochschule im System identifizieren zu können.</b></td></tr>
+              <tr>
+                  <td class="left_column">Name der Hochschule</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fdu_legalName"
+                      readonly
+                      value="{{ legalName }}"
+                    >
+                  </td>
+              </tr>
+              </table>
+              <input type="submit" value="Formular senden" id="submitDeleteUniversity">
+      
+              <!-- hidden input fields -->
+              <input type="hidden" name="message" id="fdu_message">
+              <input type="hidden" name="data" id="fdu_data">
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal update university -->
+        <div id="modalUpdateUniversity" class="modal">
+          <div class="formStyle">
+            <h2>
+              <span class="buttonClose" id="closeUpdateUniversity">&times;</span>
+              <b>Mit diesem Formular können Sie das Ändern der Daten einer Hochschule beantragen.</b>
+            </h2>
+            <form id="formUpdateUniversity">
+              <table>
+              <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name der Hochschule wie er auf akwi.de gelistet ist, um die Hochschule im System identifizieren zu können.</b></td></tr>
+              <tr>
+                  <td class="left_column">Name*</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_id_legalName"
+                      readonly
+                      value="{{ legalName }}"
+                    >
+                  </td>
+              </tr>
+              <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+              <tr><td class="left_column"><br /></td></tr>
+              <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Hochschule eintragen.</b></td></tr>
+              <tr>
+              <td class="left_column">Name</td>
+              <td class="right_column">
+                <input
+                  type="text"
+                  id="fuu_legalName"
+                  noClear
+                  value="{{ legalName}}"
+                >
+              </td>
+              </tr>
+              <tr>
+                  <td class="left_column">URL</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_url"
+                      placeholder="https://www.example.com/"
+                      noClear
+                      value="{{ url }}"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Land</td>
+                  <td class="right_column">
+                      <select id="fuu_addressCountry" noClear>
+                          <option></option>
+                          <option {%if addressCountry == "DE" %}selected{% endif %} >DE</option>
+                          <option {%if addressCountry == "AT" %}selected{% endif %} >AT</option>
+                          <option {%if addressCountry == "CH" %}selected{% endif %} >CH</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Ort</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_addressLocality"
+                      noClear
+                      value="{{ addressLocality }}"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Region</td>
+                  <td class="right_column">
+                    <select id="fuu_addressRegion" noClear>
+                        <option></option>
+                        <option {%if addressRegion == "BB" %}selected{% endif %} >BB</option> 
+                        <option {%if addressRegion == "BE" %}selected{% endif %} >BE</option> 
+                        <option {%if addressRegion == "Burgenland" %}selected{% endif %} >Burgenland</option> 
+                        <option {%if addressRegion == "BW" %}selected{% endif %} >BW</option> 
+                        <option {%if addressRegion == "BY" %}selected{% endif %} >BY</option> 
+                        <option {%if addressRegion == "HB" %}selected{% endif %} >HB</option> 
+                        <option {%if addressRegion == "HE" %}selected{% endif %} >HE</option> 
+                        <option {%if addressRegion == "HH" %}selected{% endif %} >HH</option> 
+                        <option {%if addressRegion == "Luzern" %}selected{% endif %} >Luzern</option> 
+                        <option {%if addressRegion == "MV" %}selected{% endif %} >MV</option> 
+                        <option {%if addressRegion == "NI" %}selected{% endif %} >NI</option> 
+                        <option {%if addressRegion == "NW" %}selected{% endif %} >NW</option> 
+                        <option {%if addressRegion == "RP" %}selected{% endif %} >RP</option> 
+                        <option {%if addressRegion == "SH" %}selected{% endif %} >SH</option> 
+                        <option {%if addressRegion == "SL" %}selected{% endif %} >SL</option> 
+                        <option {%if addressRegion == "SN" %}selected{% endif %} >SN</option>
+                        <option {%if addressRegion == "ST" %}selected{% endif %} >ST</option>
+                        <option {%if addressRegion == "Solothurn" %}selected{% endif %} >Solothurn</option> 
+                        <option {%if addressRegion == "TH" %}selected{% endif %} >TH</option> 
+                        <option {%if addressRegion == "Tirol" %}selected{% endif %} >Tirol</option> 
+                        <option {%if addressRegion == "Wallis" %}selected{% endif %} >Wallis</option> 
+                        <option {%if addressRegion == "Wien" %}selected{% endif %} >Wien</option> 
+                        <option {%if addressRegion == "Zürich" %}selected{% endif %} >Zürich</option>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">PLZ</td>
+                  <td class="right_column">
+                    <input
+                      type="number"
+                      id="fuu_postalCode"
+                      noClear
+                      value="{{ postalCode }}"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td class="left_column">Str. Nr.</td>
+                  <td class="right_column">
+                    <input
+                      type="text"
+                      id="fuu_streetAddress"
+                      placeholder="Musterstraße 10"
+                      noClear
+                      value="{{ streetAddress }}"
+                    >
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="left_column">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+              </tr>
+              <tr>
+                  <td colspan="2" class="left_column">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+              </tr>
+              </table>
+              <input type="submit" value="Formular senden" id="submitUpdateUniversity">
+              
+              <!-- hidden input fields -->
+              <input type="hidden" name="message" id="fuu_message">
+              <input type="hidden" name="data" id="fuu_data">  
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal insert course -->
+<div id="modalInsertCourse" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeInsertCourse">&times;</span>
+		<b>Mit diesem Formular können Sie das Einfügen eines Studiengangs beantragen.</b>
+	  </h2>
+	  <form id="formInsertCourse">
+		<table>
+		  <tr><td colspan="2" class="left_column"><b>Studiengang hinzufügen. Der Name der Hochschule, der Fakultät und des Abschlusses, wie er auf akwi.de gelistete ist, angeben, um den neuen Studiengang zuzuordnen.</b></td></tr>
+		  <tr>
+			  <td class="left_column">Name der Hochschule</td>
+			  <td class="right_column">
+          <input 
+            type="text"
+            id="fic_legalName"
+            readonly
+            value="{{ legalName }}"
+          >
+        </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Name der Fakultät</td>
+			  <td class="right_column">
+          <input
+            type="text"
+            id="fic_facultyName"
+            {{ facultyReadonly }}
+            value="{{ facultyInput }}"
+          >
+        </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Abschluss</td>
+			  <td class="right_column">
+				  <select id="fic_targetName">
+					  <option></option>
+					  <option>Bachelor</option>
+					  <option>Master</option>
+					  <option>Diplom</option>
+				  </select>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column" >Name des Studiengang</td>
+			  <td class="right_column"><input type="text" id="fic_name"></td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Neueinschreibungen</td>
+			  <td class="right_column"><input type="number" id="fic_newEnrollments"></td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Studierende gesamt</td>
+			  <td class="right_column"><input type="number" id="fic_totalEnrollments"></td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitInsertCourse">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fic_message">
+		  <input type="hidden" name="data" id="fic_data">
+	  </form>
+	</div>
+  </div>
+
+<!-- Modal insert faculty -->
+  <div id="modalInsertFaculty" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeInsertFaculty">&times;</span>
+		<b>Mit diesem Formular können Sie das Einfügen einer Fakultät beantragen.</b>
+	  </h2>
+	  <form id="formInsertFaculty">
+		<table>
+		  <tr>
+			<td colspan="2" class="left_column">
+				Hinzufügen einer Fakultät.
+				Name der Hochschule wie unter akwi.de gelistet, um die Fakultät zu dieser Hochschule hinzuzufügen.
+			</td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Name der Hochschule</td>
+			  <td class="right_column">
+          <input
+            type="text"
+            id="fif_legalName"
+            readonly
+            value="{{ legalName }}"
+          >
+        </td>
+		  </tr>
+		  <tr><td class="left_column"><br /></td></tr>
+		  <tr>
+			  <td class="left_column" >Fakultät</td>
+			  <td class="right_column"><input type="text" id="fif_name"></td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitInsertFaculty">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fif_message">
+		  <input type="hidden" name="data" id="fif_data">
+	  </form>
+	</div>
+  </div>
+
+<!-- Modal insert person -->
+      <div id="modalInsertPerson" class="modal">
+        <div class="formStyle">
+          <h2>
+            <span class="buttonClose" id="closeInsertPerson">&times;</span>
+            <b>Mit diesem Formular können Sie das Einfügen einer Person beantragen.</b>
+          </h2>
+          <form id="formInsertPerson">
+            <table>
+            <tr><td colspan="2" class="left_column"><b>Person hinzufügen. Name der Hochschule und Name der Fakultät, wie er auf akwi.de gelistet ist, um die Person der Fakultät zuzuordnen.</b></td></tr>
+            <tr>
+                <td class="left_column">Name der Hochschule</td>
+                <td class="right_column">
+                  <input
+                   type="text"
+                   id="fip_legalName"
+                   readonly
+                   value="{{ legalName }}"
+                  >
+                </td>
+            </tr>
+            <tr>
+                <td class="left_column">Name der Fakultät</td>
+                <td class="right_column">
+                  <input
+                    type="text"
+                    id="fip_name"
+                    {{ facultyReadonly }}
+                    value="{{ facultyInput }}"
+                  >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="left_column"><br /><b>Daten zu Person</b></td>
+            </tr>
+            <tr>
+                <td class="left_column">Name</td>
+                <td class="right_column"><input type="text" id="fip_familyName"></td>
+            </tr>
+            <tr>
+                <td class="left_column" >Vorname</td>
+                <td class="right_column"><input type="text" id="fip_givenName"></td>
+            </tr>
+            <tr>
+            <td class="left_column">Titel</td>
+            <td class="right_column">
+                <select id="fip_honorificPrefix">
+                    <option></option>
+                    <option>kein Titel</option>
+                    <option>Dr.</option>
+                    <option>Prof. Dr.</option>
+                    <option>Prof.</option>
+                    <option>Prof. Dr. Dr.</option>
+                    <option>Prof. Ph.D.</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td class="left_column">Telefon</td>
+                <td class="right_column"><input type="text" id="fip_telephone"></td>
+            </tr>
+            <tr>
+                <td class="left_column">E-Mail</td>
+                <td class="right_column"><input type="email" id="fip_eMail"></td>
+            </tr>
+            </table>
+            <input type="submit" value="Formular senden" id="submitInsertPerson">
+    
+            <!-- hidden input fields -->
+            <input type="hidden" name="message" id="fip_message">
+            <input type="hidden" name="data" id="fip_data">
+            
+        </form>
+        </div>
+      </div>
+
+      <!-- Modals End -------------------------------------------------->
+  
+      <!-- Logic for modals -------------------------------------------->
+      <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+      <script type="text/javascript" src="/js/modalDeleteUniversity.js"></script>
+      <script type="text/javascript" src="/js/modalUpdateUniversity.js"></script>
+      <script type="text/javascript" src="/js/modalInsertCourse.js"></script>
+      <script type="text/javascript" src="/js/modalInsertPerson.js"></script>
+      <script type="text/javascript" src="/js/modalInsertFaculty.js"></script>
+      <script type="text/javascript" src="/js/universityWindowOnClick.js"></script>
+      <!-- Logic for modals End -->
+      

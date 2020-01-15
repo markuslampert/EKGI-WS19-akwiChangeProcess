@@ -1,0 +1,15 @@
+url: "http://localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "/akwi" # the subpath of your site, e.g. /blog
+
+plugins:
+  - jekyll-rdf
+  
+# Jekyll RDF settings
+jekyll_rdf:
+  path: "_data/graph.ttl"
+  default_template: "default"
+  class_template_mappings:
+    "https://schema.org/CollegeOrUniversity": "collegeOrUniversity"
+    "https://schema.org/Person": "person"
+    "https://schema.org/Course": "course"
+    "https://bmake.th-brandenburg.de/akwi/DepartmentOrFaculty": "departmentOrFaculty"

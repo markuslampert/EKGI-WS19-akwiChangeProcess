@@ -1,0 +1,5 @@
+
+<!-- get variables used in the html -->
+{% assign faculty = page.rdf %}
+{% assign name = faculty | rdf_property: "schema:name" %}
+{% assign legalName = faculty | rdf_inverse_property: "schema:department" | rdf_property: "schema:legalName" %}

@@ -1,0 +1,10 @@
+
+<!-- get variables used in the html -->
+{% assign course = page.rdf %}
+{% assign facultyName = course | rdf_property: "schema:provider" | rdf_property: "schema:name" %}
+
+{% assign name = course | rdf_property: "schema:name" %}
+{% assign targetName = course | rdf_property: "schema:educationalAlignment" | rdf_property: "schema:targetName" %}
+{% assign legalName = course | rdf_property: "schema:provider" | rdf_inverse_property: "schema:department" | rdf_property: "schema:legalName" %}
+{% assign totalEnrollments = course | rdf_property: "akwi:totalEnrollments" %}
+{% assign newEnrollments = course | rdf_property: "akwi:newEnrollments" %}

@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Custom Style Sheet -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Arbeitskreis Wirtschaftsinformatik an Hochschulen für angewandte Wissenschaften</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/css/business-frontpage.css" rel="stylesheet">
+  <!-- Favicon einbinden -->
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Font-Awesome einbinden --> <!-- used for button symbols -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/popper/popper.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- emailjs -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+  <script type="text/javascript" src="/js/init_emailjs.js"></script>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom:10px;">
+      <div class="container">
+          <a class="navbar-brand" href="/index.html"><img src="/images/AKWILogo.png" style="height: 40px;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+            <a class="nav-link" href="/index.html">Über uns</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/tagungen.html">Tagungen</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/publikationen.html">Publikationen</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/mitglieder/index.html">Mitglieder</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/leitung.html">Leitungsgremium</a>
+            </li>
+            <li class="nav-item"> 
+            <a class="nav-link" href="/links.html">Links & Services</a>
+            </li>           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header with Background Image -->
+    <header class="business-header" style="
+    margin-top: 15px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-4 text-center text-white mt-3"><b>AKWI</b></h1>
+			<h3 class="display-5 text-center text-white mt-2">Arbeitskreis Wirtschaftsinformatik</h3>
+			<h4 class="text-center text-white mt-2">an Hochschulen für angewandte Wissenschaften</h4>
+          </div>
+        </div>
+      </div>
+    </header>
+
+	
+<!-- get variables used in the html -->
+
+
+
+
+
+
+
+
+
+
+<div class="header">
+<h2>
+  Informatik Bachelor
+  <button class="btn" id="btnUpdateCourse"><i class="fa fa-gear fa-spin-hover "></i></button>
+  <button class="btn" id="btnDeleteCourse"><i class="fa fa-minus fa-hover"></i></button>
+</h2>
+<h5>
+    ( Hochschule Darmstadt )
+</h5>
+</div>
+
+<div class="row">
+<div class="main">
+<table align="center">
+	<tr>
+		<td>Zugehörig zu Fakultät</td>
+		<td>
+			Informatik
+		</td>
+	</tr>
+	<tr><td>Studierende gesamt</td><td>1095</td></tr>
+	<tr><td>Neueingeschriebene Studierende</td><td>262</td></tr>   
+</table>  
+</div>
+</div>
+
+<!-- Modals -------------------------------------------------->
+  
+  <!-- Modal delete course -->
+  <div id="modalDeleteCourse" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeDeleteCourse">&times;</span>
+		<b>Mit diesem Formular können Sie das Löschen eines Studiengangs beantragen.</b>
+	  </h2>
+	  <form id="formDeleteCourse">
+		<table>
+		  <tr><td colspan="2" class="left_column"><b>Der Name der Hochschule, des Studiengangs und des Abschlusses wie er auf akwi.de gelistet ist, um den Studiengang im System identifizieren zu können.</b></td></tr>
+		  <tr>
+			  <td class="left_column">Hochschule</td>
+			  <td class="right_column">
+				  <input
+				    type="text"
+					id="fdc_legalName"
+					readonly
+					value="Hochschule Darmstadt"
+				  >
+				</td>
+		  </tr>
+		  <tr>
+			  <td class="left_column" >Studiengang</td>
+			  <td class="right_column">
+				<input
+				  type="text"
+				  id="fdc_name"
+				  readonly
+				  value="Informatik"
+				>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Abschluss</td>
+			  <td class="right_column">
+				<input
+				  type="text"
+				  id="fdc_targetName"
+				  readonly
+				  value="Bachelor"
+				>
+			  </td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitDeleteCourse">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fdc_message">
+		  <input type="hidden" name="data" id="fdc_data">
+	  </form>
+	</div>
+  </div>
+  
+  <!-- Modal update course -->
+  <div id="modalUpdateCourse" class="modal">
+	<div class="formStyle">
+	  <h2>
+		<span class="buttonClose" id="closeUpdateCourse">&times;</span>
+		<b>Mit diesem Formular können Sie das Ändern der Daten eines Studiengangs beantragen.</b>
+	  </h2>
+	  <form id="formUpdateCourse">
+		
+		<table>
+		  <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name der Hochschule, des Studiengangs und des Abschluss wie er auf akwi.de gelistet ist, um den Studiengang im System identifizieren zu können.</b></td></tr>
+		  <tr>
+			  <td class="left_column">Hochschule*</td>
+			  <td class="right_column">
+				  <input
+					type="text"
+					id="fuc_id_legalName"
+					readonly
+					value="Hochschule Darmstadt"
+				  >
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column" >Studiengang*</td>
+			  <td class="right_column">
+				  <input
+					type="text"
+					id="fuc_id_name"
+					readonly
+					value="Informatik"
+			  ></td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Abschluss*</td>
+			  <td class="right_column">
+				<input
+				  type="text"
+				  id="fuc_id_targetName"
+				  readonly
+				  value="Bachelor"
+			  	>
+			  </td>
+		  </tr>
+		  <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+		  <tr><td class="left_column"><br /></td></tr>
+		  <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Hochschule eintragen.</b></td></tr>
+		  <tr>
+			  <td class="left_column" >Studiengang</td>
+			  <td class="right_column">
+				<input
+				  type="text"
+				  id="fuc_name"
+				  noClear
+				  value="Informatik"
+				>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Neueinschreibungen</td>
+			  <td class="right_column">
+				  <input
+					type="number"
+					id="fuc_newEnrollments"
+					noClear
+					value="262"
+				  >
+			  </td>
+		  </tr>
+		  <tr>
+			  <td class="left_column">Anzahl Studierende gesamt</td>
+			  <td class="right_column">
+				  <input
+					type="number"
+					id="fuc_totalEnrollments"
+					noClear
+					value="1095"
+				  >
+			  </td>
+		  </tr>
+		  <tr>
+			  <td colspan="2" class="left_column">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+		  </tr>
+		  <tr>
+			  <td colspan="2" class="left_column">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+		  </tr>
+		  </table>
+		  <input type="submit" value="Formular senden" id="submitUpdateCourse">
+  
+		  <!-- hidden input fields -->
+		  <input type="hidden" name="message" id="fuc_message">
+		  <input type="hidden" name="data" id="fuc_data">
+		  
+	  </form>
+	</div>
+  </div>
+  
+  <!-- Modals End -------------------------------------------------->
+  
+  <!-- Logic for modals -------------------------------------------->
+  <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+  <script type="text/javascript" src="/js/modalDeleteCourse.js"></script>
+  <script type="text/javascript" src="/js/modalUpdateCourse.js"></script>
+  
+  <script type="text/javascript" src="/js/courseWindowOnClick.js"></script>
+  <!-- Logic for modals End -->
+  
+
+
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+  	<div class="container">
+    	<p class="m-0 text-center text-white"><br></p>
+    	<br><br>
+    	<p class="m-0 text-center text-white">
+        	<a class="navbar-brand" href="/impressum.html">Impressum</a>
+    	</p>
+  	</div>
+	</footer>
+
+</body>
+</html>

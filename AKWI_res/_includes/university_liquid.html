@@ -1,0 +1,30 @@
+
+<!-- get variables used in the html -->
+{% assign university = page.rdf %}
+{% assign address = university | rdf_property: "schema:address" %}
+
+{% assign legalName = university | rdf_property: "schema:legalName" %}
+{% assign url = university | rdf_property: "schema:url" %}
+{% assign addressCountry = address | rdf_property: "schema:addressCountry" %}
+{% assign addressRegion = address | rdf_property: "schema:addressRegion" %}
+{% assign addressLocality = address | rdf_property: "schema:addressLocality" %}
+{% assign postalCode = address | rdf_property: "schema:postalCode" %}
+{% assign streetAddress = address | rdf_property: "schema:streetAddress" %}
+
+<!-- If university has one faculty, fill this faculty in the corresponding input fields by using the variable facultyInput. -->
+{% assign facultyInput = "" %}
+{% assign facultyReadonly = "" %}
+{% capture faculties_query %}
+  Select
+	  ?departmentOrFaculty
+  Where{
+    ?resourceUri a schema:CollegeOrUniversity;
+                   schema:department ?departmentOrFaculty.
+  }
+  ORDER BY ?departmentOrFaculty
+{% endcapture %}
+{% assign result_set = page.rdf | sparql_query: faculties_query %}
+{% if result_set.size == 1 %}
+  {% assign facultyReadonly = "readonly" %}
+  {% assign facultyInput = result_set[0].departmentOrFaculty | rdf_property: "schema:name" %}
+{% endif %}

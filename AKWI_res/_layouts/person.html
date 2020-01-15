@@ -1,0 +1,211 @@
+---
+layout: "default"
+---
+
+{% include person_liquid.html %}
+
+<div class="header">
+<h2>
+	{{ honorificPrefix }} {{ familyName }}
+	<button class="btn" id="btnUpdatePerson"><i class="fa fa-gear fa-spin-hover "></i></button>
+	<button class="btn" id="btnDeletePerson"><i class="fa fa-minus fa-hover"></i></button>
+</h2>
+<h5>
+  ( {{ legalName }} )
+</h5>
+</div>
+
+<div class="row">
+<div class="main">
+<table align="center">
+	<tr><td>Vorname</td><td>{{ givenName }}</td></tr>
+	<tr><td>Tel.</td><td>{{ telephone }}</td></tr>
+	<tr><td>E-Mail</td><td>{{ eMail }}</td></tr>   
+</table>  
+</div> 
+</div>
+
+<!-- Modals -------------------------------------------------->
+
+<!-- Modal delete person -->
+<div id="modalDeletePerson" class="modal">
+  <div class="formStyle">
+    <h2>
+      <span class="buttonClose" id="closeDeletePerson">&times;</span>
+      <b>Mit diesem Formular können Sie das Löschen einer Person beantragen.</b>
+    </h2>
+    <form id="formDeletePerson">
+      <table>
+      <tr><td colspan="2" class="left_column"><b>Der Name, Vorname, Name der Hochschule, Name der Fakultät wie er auf akwi.de gelistet ist, um die Person im System identifizieren zu können.</b></td></tr>
+      <tr>
+          <td class="left_column">Name der Hochschule</td>
+          <td class="right_column">
+            <input
+              type="text"
+              id="fdp_legalName"
+              readonly
+              value="{{ legalName }}"
+            >
+          </td>
+      </tr>
+      <tr>
+          <td class="left_column">Name der Fakultät</td>
+          <td class="right_column">
+            <input
+              type="text"
+              id="fdp_name"
+              readonly
+              value = "{{ name }}"
+            >
+          </td>
+      </tr>
+      <tr>
+          <td class="left_column">Name</td>
+          <td class="right_column">
+            <input
+              type="text"
+              id="fdp_familyName"
+              readonly
+              value="{{ familyName }}"
+            >
+          </td>
+      </tr>
+      <tr>
+          <td class="left_column" >Vorname</td>
+          <td class="right_column">
+            <input
+              type="text"
+              id="fdp_givenName"
+              readonly
+              value="{{ givenName }}"
+            >
+          </td>
+      </tr>
+      </table>
+      <input type="submit" value="Formular senden" id="submitDeletePerson">
+
+      <!-- hidden input fields -->
+      <input type="hidden" name="message" id="fdp_message">
+      <input type="hidden" name="data" id="fdp_data">
+    </form>
+  </div>
+</div>
+
+<!-- Modal update person -->
+<div id="modalUpdatePerson" class="modal">
+  <div class="formStyle">
+    <h2>
+      <span class="buttonClose" id="closeUpdatePerson">&times;</span>
+      <b>Mit diesem Formular können Sie das Ändern der Daten einer Person beantragen.</b>
+    </h2>
+    <form id="formUpdatePerson">
+      <table>
+        <tr><td colspan="2" class="left_column"><b>Identifikation - Der Name und Vorname wie er auf akwi.de gelistet ist, um die Person im System identifizieren zu können.</b></td></tr>
+        <tr>
+            <td class="left_column">Name*</td>
+            <td class="right_column">
+              <input
+                type="text"
+                id="fup_id_familyName"
+                readonly
+                value="{{ familyName }}"
+              >
+            </td>
+        </tr>
+        <tr>
+            <td class="left_column" >Vorname*</td>
+            <td class="right_column">
+              <input
+                type="text"
+                id="fup_id_givenName"
+                readonly
+                value="{{ givenName }}"
+              >
+            </td>
+        </tr>
+        <tr><td colspan="2" class="left_column">*Pflichtfelder</td></tr>
+        <tr><td class="left_column"><br /></td></tr>
+        <tr><td colspan="2" class="left_column"><b>Änderung beantragen - Hier die neuen Daten zu der Person eintragen.</b></td></tr>
+        <tr>
+        <td class="left_column">Titel</td>
+        <td class="right_column">
+            <select id="fup_honorificPrefix" noClear>
+                <option></option>
+                <option {%if honorificPrefix == "kein Titel" %}selected{% endif %} >kein Titel</option>
+                <option {%if honorificPrefix == "Dr." %}selected{% endif %} >Dr.</option>
+                <option {%if honorificPrefix == "Prof. Dr." %}selected{% endif %} >Prof. Dr.</option>
+                <option {%if honorificPrefix == "Prof." %}selected{% endif %} >Prof.</option>
+                <option {%if honorificPrefix == "Prof. Dr. Dr." %}selected{% endif %} >Prof. Dr. Dr.</option>
+                <option {%if honorificPrefix == "Prof. Ph.D." %}selected{% endif %} >Prof. Ph.D.</option>
+            </select>
+        </td>
+        </tr>
+        <tr>
+            <td class="left_column">Name</td>
+            <td class="right_column">
+              <input
+                type="text"
+                id="fup_familyName"
+                noClear
+                value="{{ familyName }}"
+              >
+            </td>
+            <td class="left_column"><br /></td>
+        </tr>
+        <tr>
+            <td class="left_column">Vorname</td>
+            <td class="right_column">
+              <input
+                type="text"
+                id="fup_givenName"
+                noclear
+                value="{{ givenName }}"
+              >
+            </td>
+        </tr>
+        <tr>
+            <td class="left_column">Telefon</td>
+            <td class="right_column">
+              <input
+                type="text"
+                id="fup_telephone"
+                noClear
+                value="{{ telephone }}"
+              >
+            </td>
+        </tr>
+        <tr>
+            <td class="left_column">E-Mail</td>
+            <td class="right_column">
+              <input
+                type="email"
+                id="fup_eMail"
+                noClear
+                value="{{ eMail }}"
+              >
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="left_column">Mindestens ein zu änderndes Feld muss angegeben werden.</td>   
+        </tr>
+        <tr>
+            <td colspan="2" class="left_column">Wenn ein Feld leer ist, bedeutet dies, es wird keine Änderung für dieses Feld beantragt.</td>
+        </tr>
+      </table>
+      <input type="submit" value="Formular senden" id="submitUpdatePerson">
+
+      <!-- hidden input fields -->
+      <input type="hidden" name="message" id="fup_message">
+      <input type="hidden" name="data" id="fup_data">
+    </form>
+  </div>
+</div>
+
+  <!-- Modals End -------------------------------------------------->
+
+  <!-- Logic for modals -------------------------------------------->
+  <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+  <script type="text/javascript" src="/js/modalDeletePerson.js"></script>
+  <script type="text/javascript" src="/js/modalUpdatePerson.js"></script>
+  <script type="text/javascript" src="/js/personWindowOnClick.js"></script>
+  <!-- Logic for modals End -->
