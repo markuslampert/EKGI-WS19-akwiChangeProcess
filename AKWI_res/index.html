@@ -2,6 +2,8 @@
 layout: "default"
 ---
 
+{% include config_liquid.html %}
+
 <div class = "main_area">
 <div class="row">
 <div class="side">
@@ -24,7 +26,7 @@ layout: "default"
   {% assign collegeOrUniversities = collegeOrUniversities_query | sparql_query %}
   {% for row in collegeOrUniversities %}
     <li>
-      <a href="/mitglieder{{ row.collegeOrUniversity.page_url }}">{{ row.collegeOrUniversity | rdf_property: "schema:legalName" }}</a>
+      <a href="{{ urlsubpath }}/mitglieder{{ row.collegeOrUniversity.page_url }}">{{ row.collegeOrUniversity | rdf_property: "schema:legalName" }}</a>
     </li>
   {% endfor %}
 </ul>
@@ -44,7 +46,7 @@ layout: "default"
       <tr><td colspan="2" class="left_column"><b>Hier die Daten der Hochschule eintragen.</b></td></tr>
       <tr>
           <td class="left_column">Vollständiger Name der Hochschule</td>
-          <td class="right_column"><input type="text" id="fiu_id_legalName"></td>
+          <td class="right_column"><input type="text" id="fiu_legalName"></td>
       </tr>
       <tr>
           <td class="left_column">URL</td>
@@ -114,7 +116,7 @@ layout: "default"
   </div>
 </div>
 <!-- Logic for modals -------------------------------------------->
-<script type="text/javascript" src="/js/FormularDataManager.js"></script>
-<script type="text/javascript" src="/js/modalInsertUniversity.js"></script>
-<script type="text/javascript" src="/js/indexWindowOnClick.js"></script>
+<script type="text/javascript" src="{{ urlsubpath }}/js/FormularDataManager.js"></script>
+<script type="text/javascript" src="{{ urlsubpath }}/js/modalInsertUniversity.js"></script>
+<script type="text/javascript" src="{{ urlsubpath }}/js/indexWindowOnClick.js"></script>
 <!-- Logic for modals End -->

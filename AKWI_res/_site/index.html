@@ -1,10 +1,14 @@
+
+
+
+
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
 
   <!-- Custom Style Sheet -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <link rel="stylesheet" type="text/css" href="/akwi/AKWI_website/css/main.css"/>
 
   <title></title>
   <meta charset="utf-8">
@@ -12,51 +16,51 @@
   
   <title>Arbeitskreis Wirtschaftsinformatik an Hochschulen für angewandte Wissenschaften</title>
   <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/akwi/AKWI_website/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="/css/business-frontpage.css" rel="stylesheet">
+  <link href="/akwi/AKWI_website/css/business-frontpage.css" rel="stylesheet">
   <!-- Favicon einbinden -->
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/akwi/AKWI_website/favicon.ico">
   <!-- Font-Awesome einbinden --> <!-- used for button symbols -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/popper/popper.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/akwi/AKWI_website/vendor/jquery/jquery.min.js"></script>
+  <script src="/akwi/AKWI_website/vendor/popper/popper.min.js"></script>
+  <script src="/akwi/AKWI_website/vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- emailjs -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <script type="text/javascript" src="/js/init_emailjs.js"></script>
+  <script type="text/javascript" src="/akwi/AKWI_website/js/init_emailjs.js"></script>
 
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom:10px;">
       <div class="container">
-          <a class="navbar-brand" href="/index.html"><img src="/images/AKWILogo.png" style="height: 40px;" /></a>
+          <a class="navbar-brand" href="/akwi/AKWI_website/index.html"><img src="/akwi/AKWI_website/images/AKWILogo.png" style="height: 40px;" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"> 
-            <a class="nav-link" href="/index.html">Über uns</a>
+            <a class="nav-link" href="/akwi/AKWI_website/index.html">Über uns</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/tagungen.html">Tagungen</a>
+            <a class="nav-link" href="/akwi/AKWI_website/tagungen.html">Tagungen</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/publikationen.html">Publikationen</a>
+            <a class="nav-link" href="/akwi/AKWI_website/publikationen.html">Publikationen</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/mitglieder/index.html">Mitglieder</a>
+            <a class="nav-link" href="/akwi/AKWI_website/mitglieder/index.html">Mitglieder</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/leitung.html">Leitungsgremium</a>
+            <a class="nav-link" href="/akwi/AKWI_website/leitung.html">Leitungsgremium</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/links.html">Links & Services</a>
+            <a class="nav-link" href="/akwi/AKWI_website/links.html">Links & Services</a>
             </li>           
           </ul>
         </div>
@@ -76,7 +80,11 @@
       </div>
     </header>
 
-	<div class = "main_area">
+	
+
+
+
+<div class = "main_area">
 <div class="row">
 <div class="side">
 <h2>
@@ -91,11 +99,11 @@
   
   
     <li>
-      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt.html">Hochschule Darmstadt</a>
+      <a href="/akwi/AKWI_website/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/HS_Darmstadt.html">Hochschule Darmstadt</a>
     </li>
   
     <li>
-      <a href="/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/TH_Brandenburg.html">Technische Hochschule Brandenburg</a>
+      <a href="/akwi/AKWI_website/mitglieder/rdfsites/https/bmake.th-brandenburg.de/akwi/TH_Brandenburg.html">Technische Hochschule Brandenburg</a>
     </li>
   
 </ul>
@@ -115,7 +123,7 @@
       <tr><td colspan="2" class="left_column"><b>Hier die Daten der Hochschule eintragen.</b></td></tr>
       <tr>
           <td class="left_column">Vollständiger Name der Hochschule</td>
-          <td class="right_column"><input type="text" id="fiu_id_legalName"></td>
+          <td class="right_column"><input type="text" id="fiu_legalName"></td>
       </tr>
       <tr>
           <td class="left_column">URL</td>
@@ -185,9 +193,9 @@
   </div>
 </div>
 <!-- Logic for modals -------------------------------------------->
-<script type="text/javascript" src="/js/FormularDataManager.js"></script>
-<script type="text/javascript" src="/js/modalInsertUniversity.js"></script>
-<script type="text/javascript" src="/js/indexWindowOnClick.js"></script>
+<script type="text/javascript" src="/akwi/AKWI_website/js/FormularDataManager.js"></script>
+<script type="text/javascript" src="/akwi/AKWI_website/js/modalInsertUniversity.js"></script>
+<script type="text/javascript" src="/akwi/AKWI_website/js/indexWindowOnClick.js"></script>
 <!-- Logic for modals End -->
 
 
@@ -197,7 +205,7 @@
     	<p class="m-0 text-center text-white"><br></p>
     	<br><br>
     	<p class="m-0 text-center text-white">
-        	<a class="navbar-brand" href="/impressum.html">Impressum</a>
+        	<a class="navbar-brand" href="/akwi/AKWI_website/impressum.html">Impressum</a>
     	</p>
   	</div>
 	</footer>

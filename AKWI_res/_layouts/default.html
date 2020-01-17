@@ -2,13 +2,15 @@
 rdf_prefix_path: "_data/prefixes.sparql"
 ---
 
+{% include config_liquid.html %}
+
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
 
   <!-- Custom Style Sheet -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <link rel="stylesheet" type="text/css" href="{{ urlsubpath }}/css/main.css"/>
 
   <title></title>
   <meta charset="utf-8">
@@ -16,51 +18,51 @@ rdf_prefix_path: "_data/prefixes.sparql"
   
   <title>Arbeitskreis Wirtschaftsinformatik an Hochschulen für angewandte Wissenschaften</title>
   <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ urlsubpath }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="/css/business-frontpage.css" rel="stylesheet">
+  <link href="{{ urlsubpath }}/css/business-frontpage.css" rel="stylesheet">
   <!-- Favicon einbinden -->
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ urlsubpath }}/favicon.ico">
   <!-- Font-Awesome einbinden --> <!-- used for button symbols -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/popper/popper.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{ urlsubpath }}/vendor/jquery/jquery.min.js"></script>
+  <script src="{{ urlsubpath }}/vendor/popper/popper.min.js"></script>
+  <script src="{{ urlsubpath }}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- emailjs -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <script type="text/javascript" src="/js/init_emailjs.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/init_emailjs.js"></script>
 
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom:10px;">
       <div class="container">
-          <a class="navbar-brand" href="/index.html"><img src="/images/AKWILogo.png" style="height: 40px;" /></a>
+          <a class="navbar-brand" href="{{ urlsubpath }}/index.html"><img src="{{ urlsubpath }}/images/AKWILogo.png" style="height: 40px;" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"> 
-            <a class="nav-link" href="/index.html">Über uns</a>
+            <a class="nav-link" href="{{ urlsubpath }}/index.html">Über uns</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/tagungen.html">Tagungen</a>
+            <a class="nav-link" href="{{ urlsubpath }}/tagungen.html">Tagungen</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/publikationen.html">Publikationen</a>
+            <a class="nav-link" href="{{ urlsubpath }}/publikationen.html">Publikationen</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/mitglieder/index.html">Mitglieder</a>
+            <a class="nav-link" href="{{ urlsubpath }}/mitglieder/index.html">Mitglieder</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/leitung.html">Leitungsgremium</a>
+            <a class="nav-link" href="{{ urlsubpath }}/leitung.html">Leitungsgremium</a>
             </li>
             <li class="nav-item"> 
-            <a class="nav-link" href="/links.html">Links & Services</a>
+            <a class="nav-link" href="{{ urlsubpath }}/links.html">Links & Services</a>
             </li>           
           </ul>
         </div>
@@ -88,7 +90,7 @@ rdf_prefix_path: "_data/prefixes.sparql"
     	<p class="m-0 text-center text-white"><br></p>
     	<br><br>
     	<p class="m-0 text-center text-white">
-        	<a class="navbar-brand" href="/impressum.html">Impressum</a>
+        	<a class="navbar-brand" href="{{ urlsubpath }}/impressum.html">Impressum</a>
     	</p>
   	</div>
 	</footer>

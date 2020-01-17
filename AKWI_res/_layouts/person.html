@@ -2,6 +2,7 @@
 layout: "default"
 ---
 
+{% include config_liquid.html %}
 {% include person_liquid.html %}
 
 <div class="header">
@@ -204,8 +205,8 @@ layout: "default"
   <!-- Modals End -------------------------------------------------->
 
   <!-- Logic for modals -------------------------------------------->
-  <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
-  <script type="text/javascript" src="/js/modalDeletePerson.js"></script>
-  <script type="text/javascript" src="/js/modalUpdatePerson.js"></script>
-  <script type="text/javascript" src="/js/personWindowOnClick.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+  <script type="text/javascript" src="{{ urlsubpath }}/js/modalDeletePerson.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/modalUpdatePerson.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/personWindowOnClick.js"></script>
   <!-- Logic for modals End -->

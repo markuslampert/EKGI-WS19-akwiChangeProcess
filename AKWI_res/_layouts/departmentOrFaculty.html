@@ -2,6 +2,7 @@
 layout: "default"
 ---
 
+{% include config_liquid.html %}
 {% include faculty_liquid.html %}
 
 <div class = "main_area">
@@ -144,10 +145,10 @@ layout: "default"
 <!-- Modals End -------------------------------------------------->
 
  <!-- Logic for modals -------------------------------------------->
- <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+ <script type="text/javascript" src="{{ urlsubpath }}/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
  
- <script type="text/javascript" src="/js/modalDeleteFaculty.js"></script>
- <script type="text/javascript" src="/js/modalUpdateFaculty.js"></script>
+ <script type="text/javascript" src="{{ urlsubpath }}/js/modalDeleteFaculty.js"></script>
+ <script type="text/javascript" src="{{ urlsubpath }}/js/modalUpdateFaculty.js"></script>
  
- <script type="text/javascript" src="/js/facultyWindowOnClick.js"></script>
+ <script type="text/javascript" src="{{ urlsubpath }}/js/facultyWindowOnClick.js"></script>
  <!-- Logic for modals End -->

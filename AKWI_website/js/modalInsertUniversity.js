@@ -21,10 +21,10 @@ siu.onclick = function () {
 }
 
 function submitInsertUniversity(){
-    var formularIds = ["fiu_id_legalName", "fiu_url", "fiu_addressCountry", "fiu_addressLocality", "fiu_addressRegion", "fiu_postalCode", "fiu_streetAddress"];
+    var formularIds = ["fiu_legalName", "fiu_url", "fiu_addressCountry", "fiu_addressLocality", "fiu_addressRegion", "fiu_postalCode", "fiu_streetAddress"];
     var formularDataM = new FormularDataManager(formularIds, fiu, fiu_m, fiu_d);
     var validInput =
-        formularDataM.checkRequiredFields(["id_legalName", "url", "addressCountry", "addressLocality", "addressRegion", "postalCode", "streetAddress"], "Bitte alle Felder ausfüllen.");
+        formularDataM.checkRequiredFields(["legalName", "url", "addressCountry", "addressLocality", "addressRegion", "postalCode", "streetAddress"], "Bitte alle Felder ausfüllen.");
     if (validInput){
         //generate json string
         formularDataM.generateEMailContent(

@@ -1,6 +1,6 @@
 
 // Fuseki Server
-var fusekiUrlConfig = "http://localhost:3030/akwi-latest-graph";
+var fusekiUrlConfig = "http://fbw-sgmwi.th-brandenburg.de:3030/akwi_graph_test";
 
 // Formular Meta Data
 var validFormularConfig = 

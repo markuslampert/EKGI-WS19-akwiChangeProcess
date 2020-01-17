@@ -2,6 +2,7 @@
 layout: "default"
 ---
 
+{% include config_liquid.html %}
 {% include course_liquid.html %}
 
 <div class="header">
@@ -184,11 +185,11 @@ layout: "default"
   <!-- Modals End -------------------------------------------------->
   
   <!-- Logic for modals -------------------------------------------->
-  <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
-  <script type="text/javascript" src="/js/modalDeleteCourse.js"></script>
-  <script type="text/javascript" src="/js/modalUpdateCourse.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+  <script type="text/javascript" src="{{ urlsubpath }}/js/modalDeleteCourse.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/modalUpdateCourse.js"></script>
   
-  <script type="text/javascript" src="/js/courseWindowOnClick.js"></script>
+  <script type="text/javascript" src="{{ urlsubpath }}/js/courseWindowOnClick.js"></script>
   <!-- Logic for modals End -->
   
 

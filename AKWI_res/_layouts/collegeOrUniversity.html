@@ -2,6 +2,7 @@
 layout: "default"
 ---
 
+{% include config_liquid.html %}
 {% include university_liquid.html %}
 
 <div class = "main_area">
@@ -31,7 +32,7 @@ layout: "default"
   <ul>
   {% for row in result_set %}
     <li>
-      <a href="/mitglieder{{ row.course.page_url }}">
+      <a href="{{ urlsubpath }}/mitglieder{{ row.course.page_url }}">
       {{ row.course | rdf_property: "schema:name" }}
       {{ row.course | rdf_property: "schema:educationalAlignment" | rdf_property: "schema:targetName"}}
       </a>
@@ -54,7 +55,7 @@ layout: "default"
   <ul>
   {% for row in result_set %}
     <li>
-      <a href="/mitglieder{{ row.employee.page_url }}">
+      <a href="{{ urlsubpath }}/mitglieder{{ row.employee.page_url }}">
         {{ row.employee | rdf_property: "schema:honorificPrefix" }}
         {{ row.employee | rdf_property: "schema:familyName" }}
       </a>
@@ -93,7 +94,7 @@ layout: "default"
   <ul>
   {% for row in result_set %}
     <li>
-      <a href="/mitglieder{{ row.departmentOrFaculty.page_url }}">
+      <a href="{{ urlsubpath }}/mitglieder{{ row.departmentOrFaculty.page_url }}">
         {{ row.departmentOrFaculty | rdf_property: "schema:name" }}
       </a>
     </li>
@@ -459,12 +460,12 @@ layout: "default"
       <!-- Modals End -------------------------------------------------->
   
       <!-- Logic for modals -------------------------------------------->
-      <script type="text/javascript" src="/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
-      <script type="text/javascript" src="/js/modalDeleteUniversity.js"></script>
-      <script type="text/javascript" src="/js/modalUpdateUniversity.js"></script>
-      <script type="text/javascript" src="/js/modalInsertCourse.js"></script>
-      <script type="text/javascript" src="/js/modalInsertPerson.js"></script>
-      <script type="text/javascript" src="/js/modalInsertFaculty.js"></script>
-      <script type="text/javascript" src="/js/universityWindowOnClick.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/FormularDataManager.js"></script> <!-- FormularDataManager - turns formular input into json and sends emails -->
+      <script type="text/javascript" src="{{ urlsubpath }}/js/modalDeleteUniversity.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/modalUpdateUniversity.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/modalInsertCourse.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/modalInsertPerson.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/modalInsertFaculty.js"></script>
+      <script type="text/javascript" src="{{ urlsubpath }}/js/universityWindowOnClick.js"></script>
       <!-- Logic for modals End -->
       
