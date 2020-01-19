@@ -8,8 +8,8 @@ class FormularDataManager{
         for(var key in formularIds){
             var formularId = formularIds[key];
             var tmp = document.getElementById(formularId).value;
-            if(!isNaN(tmp) && !(formularId in numericAttributesEscapeFromParseInt) ){tmp = parseInt(tmp);}
             formularId = formularId.replace(/[a-zA-Z]*_/,''); // Trim präfix to get attribute name for json. E.g. a_b_c becomes b_c .
+            if(!isNaN(tmp) && !(formularId in numericAttributesEscapeFromParseInt) ){tmp = parseInt(tmp);}
             formularData[formularId]=tmp;
         }
         this.formularData = formularData; //formular Data is Object which contains User-Input
